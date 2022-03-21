@@ -1,6 +1,6 @@
 import React from "react";
 import Axios from "axios";
-import "./App.scss";
+import "./_App.scss";
 import Banner from "../components/Banner/Banner.jsx";
 
 function App() {

@@ -1,12 +1,15 @@
-import "../Banner/Banner.scss";
+import "../Banner/_Banner.scss";
+import Button from "../Button/Button.jsx";
 import logo from "./banner-logo-white.svg";
 
 function Banner() {
   return (
     <div className="gpm-banner">
       <img src={logo} alt="Groupomania" className="gpm-logo" />
-      <h1 className="gpm-title">Le réseau social de Groupomania</h1>
-      <p>Salut le test</p>
+      <div className="gpm-text-banner">
+        <p className="gpm-connection">Connexion</p>
+        <Button></Button>
+      </div>
     </div>
   );
 }
