@@ -1,14 +1,21 @@
-import "./App.css";
+import React from "react";
+import Axios from "axios";
+import "./App.scss";
 import Banner from "../components/Banner/Banner.jsx";
-import logo from "../assets/banner-logo-white.svg";
 
 function App() {
+  Axios({
+    method: "GET",
+    url: "http://localhost:4000/",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res) => {
+    console.log(res.data.message);
+  });
   return (
     <div className="App">
-      <Banner>
-        <img src={logo} alt="Groupomania" className="gpm-logo" />
-        <h1 className="gpm-title">Le réseau social de Groupomania</h1>
-      </Banner>
+      <Banner></Banner>
     </div>
   );
 }
