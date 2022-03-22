@@ -1,7 +1,7 @@
 import React from "react";
 import Axios from "axios";
+import Home from "./components/Home/Home";
 import "./_App.scss";
-import Banner from "../components/Banner/Banner.jsx";
 
 function App() {
   Axios({
@@ -15,7 +15,7 @@ function App() {
   });
   return (
     <div className="App">
-      <Banner></Banner>
+      <Home></Home>
     </div>
   );
 }

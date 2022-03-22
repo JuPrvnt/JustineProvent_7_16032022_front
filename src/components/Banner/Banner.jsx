@@ -1,6 +1,7 @@
-import "../Banner/_Banner.scss";
+import React from "react";
 import Button from "../Button/Button.jsx";
-import logo from "./banner-logo-white.svg";
+import logo from "../../assets/banner-logo-white.svg";
+import "../Banner/_Banner.scss";
 
 function Banner() {
   return (

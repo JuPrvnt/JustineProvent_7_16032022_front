@@ -1,0 +1,51 @@
+@import url("http://fonts.cdnfonts.com/css/wire-one");
+$color-primary: #fc2c04;
+$color-secondary: #ffe2d4;
+$color-tertiary: #6f6f6f;
+
+.gpm-background-banner {
+  position: relative;
+}
+
+.gpm-title-part1 {
+  color: $color-primary;
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+
+.gpm-title-part2 {
+  color: black;
+  font-size: 96px;
+  font-family: "Wire One", sans-serif;
+  font-weight: 400;
+  margin-top: -35px;
+}
+
+.gpm-block-flex {
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+
+.gpm-block-red {
+  height: 480px;
+  width: 830px;
+  background-color: $color-primary;
+}
+
+.gpm-block-pink {
+  height: 640px;
+  width: 1000px;
+  background-color: $color-secondary;
+}
+
+.gpm-homepage-image {
+  position: absolute;
+  margin-bottom: 50px;
+  margin-left: 25%;
+  width: 50%;
+  height: 650px;
+  object-fit: cover;
+  border-radius: 25px;
+}
