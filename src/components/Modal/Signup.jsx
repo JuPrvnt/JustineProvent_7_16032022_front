@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import ConnectionAPI from "../../service/ConnectionAPI";
 
-import "../Signup/_Signup.scss";
-
 class Signup extends Component {
   onSignUp(user) {
     ConnectionAPI.signup(user);

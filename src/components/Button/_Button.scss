@@ -3,6 +3,7 @@ $color-primary: #fc2c04;
 .gpm-button {
   display: flex;
   align-self: center;
+  align-items: center;
   justify-content: center;
   height: 60px;
   width: 140px;
@@ -12,6 +13,7 @@ $color-primary: #fc2c04;
   color: white;
   font-family: "Roboto", Tahoma, Verdana, sans-serif;
   font-weight: bold;
+  border-style: none;
 }
 
 .gpm-link-signupopup {
