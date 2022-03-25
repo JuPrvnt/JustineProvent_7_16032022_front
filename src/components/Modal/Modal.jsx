@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
+import Signup from "./Signup";
+import Inscription from "../Log/SignupForm";
 import "./_Modal.scss";
 
 const Modal = (props) => {
@@ -11,6 +13,15 @@ const Modal = (props) => {
 
 export default Modal;
 
-export const ModalContent = (props) => {
-  return <div className="modal-content">{props.children}</div>;
+export const ModalBody = (props) => {
+  return (
+    <div className="modal-body">
+      {props.children}
+      <Inscription></Inscription>
+    </div>
+  );
+};
+
+export const ModalBackground = (props) => {
+  return <div className="modal-background">{props.children}</div>;
 };
