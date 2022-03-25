@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
@@ -99,7 +100,9 @@ const Inscription = () => {
       />
       {errors.password && <span>{errors.password.message}</span>}
       <br />
-      <input type="submit" value="Je m'inscris" className="gpm-button-form" />
+      <Link to="/Connected">
+        <input type="submit" value="Je m'inscris" className="gpm-button-form" />
+      </Link>
       <span className="error-message">{errorData}</span>{" "}
     </form>
   );

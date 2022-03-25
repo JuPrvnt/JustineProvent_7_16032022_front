@@ -30,3 +30,19 @@ $color-background: #6f6f6f;
   font-family: "Roboto", Tahoma, Verdana, sans-serif;
   font-weight: bold;
 }
+
+.button-modal {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  width: 140px;
+  border-radius: 25px;
+  background-color: $color-primary;
+  margin: 40px;
+  color: white;
+  font-family: "Roboto", Tahoma, Verdana, sans-serif;
+  font-weight: bold;
+  border-style: none;
+}

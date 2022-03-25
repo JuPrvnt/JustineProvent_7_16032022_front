@@ -1,5 +1,4 @@
 import React from "react";
-import Signup from "./Signup";
 import Inscription from "../Log/SignupForm";
 import "./_Modal.scss";
 
