@@ -1,8 +1,8 @@
 import React from "react";
-import Inscription from "../Log/SignupForm";
-import "./_Modal.scss";
+import SignUpForm from "../../../components/SignupForm/SignupForm";
+import "./_SignupModal.scss";
 
-const Modal = (props) => {
+const SignupModal = (props) => {
   return (
     <div className={`modal ${props.show ? "active" : ""} transparancy`}>
       <div>{props.children}</div>
@@ -10,17 +10,17 @@ const Modal = (props) => {
   );
 };
 
-export default Modal;
+export default SignupModal;
 
-export const ModalBody = (props) => {
+export const SignupModalBody = (props) => {
   return (
     <div className="modal-body">
       {props.children}
-      <Inscription></Inscription>
+      <SignUpForm></SignUpForm>
     </div>
   );
 };
 
-export const ModalBackground = (props) => {
+export const SignupModalBackground = (props) => {
   return <div className="modal-background">{props.children}</div>;
 };

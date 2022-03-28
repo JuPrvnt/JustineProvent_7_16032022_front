@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import Home from "./components/Home/Home";
+import Log from "./Pages/1.Log/Log/Log";
 import "./_App.scss";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Home></Home>
+        <Log></Log>
       </div>
     );
   }

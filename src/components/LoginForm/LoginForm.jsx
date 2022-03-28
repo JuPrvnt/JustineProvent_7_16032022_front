@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import "./_SignupForm.scss";
+import "./_LoginForm.scss";
 
-const Inscription = () => {
+const SignUpForm = () => {
   // useState
   const [errorData, setErrorData] = useState("");
 
@@ -24,7 +24,7 @@ const Inscription = () => {
   const onSubmit = (data) => {
     axios({
       method: "POST",
-      url: `http://localhost:3000/signup`,
+      url: `http://localhost:3000/login`,
       data: {
         lastName: data.lastName,
         firstName: data.firstName,
@@ -49,28 +49,6 @@ const Inscription = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
-      <label>
-        <p className="gpm-title-form">Mon NOM :</p>
-      </label>
-      <input
-        className="gpm-input-form"
-        {...register("lastName", {
-          required: true,
-        })}
-      />
-      {errors.lastName && <span>{errors.lastName.message}</span>}
-      <br />
-      <label>
-        <p className="gpm-title-form">Mon Prénom :</p>
-      </label>
-      <input
-        className="gpm-input-form"
-        {...register("firstName", {
-          required: true,
-        })}
-      />
-      {errors.firstName && <span>{errors.firstName.message}</span>}
-      <br />
       <label>
         <p className="gpm-title-form">Mon adresse email :</p>
       </label>
@@ -108,4 +86,4 @@ const Inscription = () => {
   );
 };
 
-export default Inscription;
+export default SignUpForm;
