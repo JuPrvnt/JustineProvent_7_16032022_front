@@ -21,10 +21,11 @@ $color-primary: #fc2c04;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  height: 500px;
+  height: 100%;
   width: 370px;
   background-color: $color-primary;
   border-radius: 25px;
+  padding-bottom: 20px;
 }
 
 .modal-background {

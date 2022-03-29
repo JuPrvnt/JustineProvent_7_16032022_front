@@ -1,11 +1,14 @@
 import React from "react";
 import logo from "../../assets/header-logo-white.svg";
+import { Link } from "react-router-dom";
 import "./_Header.scss";
 
 function Header() {
   return (
     <div className="gpm-header">
-      <img src={logo} alt="Groupomania" className="gpm-logo" />
+      <Link to="/" className="gpm-logo">
+        <img src={logo} alt="Groupomania" className="gpm-logo" />
+      </Link>
     </div>
   );
 }
