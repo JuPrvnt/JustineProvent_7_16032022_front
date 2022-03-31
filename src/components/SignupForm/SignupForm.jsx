@@ -100,7 +100,7 @@ const SignUpForm = () => {
       />
       {errors.password && <span>{errors.password.message}</span>}
       <br />
-      <Link to="/Connected">
+      <Link to="/connected">
         <input type="submit" value="Je m'inscris" className="gpm-button-form" />
       </Link>
       <span className="error-message">{errorData}</span>{" "}

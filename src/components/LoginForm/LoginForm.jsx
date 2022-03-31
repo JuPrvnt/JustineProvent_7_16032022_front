@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import "./_LoginForm.scss";
 
-const SignUpForm = () => {
+const LoginForm = () => {
   // useState
   const [errorData, setErrorData] = useState("");
 
@@ -78,7 +78,7 @@ const SignUpForm = () => {
       />
       {errors.password && <span>{errors.password.message}</span>}
       <br />
-      <Link to="/Connected">
+      <Link to="/connected">
         <input type="submit" value="Je m'inscris" className="gpm-button-form" />
       </Link>
       <span className="error-message">{errorData}</span>{" "}
@@ -86,4 +86,4 @@ const SignUpForm = () => {
   );
 };
 
-export default SignUpForm;
+export default LoginForm;

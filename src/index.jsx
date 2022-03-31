@@ -7,6 +7,7 @@ import App from "./App.jsx";
 import SignupModal from "./Pages/1.Log/SignupModal/SignupModal";
 import LoginModal from "./Pages/1.Log/LoginModal/LoginModal";
 import Forum from "./Pages/3.Forum/Forum.jsx";
+import Account from "./Pages/4.Account/Account.jsx";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.render(
         <Route path="/signupmodal" element={<SignupModal />} />
         <Route path="/loginmodal" element={<LoginModal />} />
         <Route path="/connected" element={<Forum />} />
+        <Route path="/account" element={<Account />} />
       </Routes>
     </BrowserRouter>
     ,

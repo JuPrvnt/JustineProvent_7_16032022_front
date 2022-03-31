@@ -1,0 +1,41 @@
+$color-primary: #fc2c04;
+$color-secondary: #ffe2d4;
+$color-background: #6f6f6f;
+
+.gpm-text-header {
+  background-color: $color-background;
+  display: flex;
+  align-items: center;
+  height: 100px;
+  text-decoration: none;
+}
+
+.gpm-text-forum {
+  margin: 40px;
+  color: white;
+  font-family: "Roboto", Tahoma, Verdana, sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.gpm-forum-header {
+  display: flex;
+}
+
+.gpm-account-background {
+  display: flex;
+}
+
+.gpm-account-white {
+  background-color: white;
+  width: 60%;
+  height: 900px;
+}
+
+.gpm-image-account {
+  display: flex;
+  justify-content: flex-end;
+  width: 40%;
+  height: 900px;
+  object-fit: cover;
+}
