@@ -100,6 +100,10 @@ const SignUpForm = () => {
       />
       {errors.password && <span>{errors.password.message}</span>}
       <br />
+      <div className="gpm-form-role">
+        <input type="checkbox" value="1" className="checkboxOneInput" />
+        <label for="checkboxOneInput">Chargé(e) de communication</label>
+      </div>
       <Link to="/connected">
         <input type="submit" value="Je m'inscris" className="gpm-button-form" />
       </Link>
