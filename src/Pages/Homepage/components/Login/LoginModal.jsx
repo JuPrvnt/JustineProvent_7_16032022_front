@@ -74,7 +74,9 @@ const LoginModal = (props) => {
         />
         {errors.password && <span>{errors.password.message}</span>}
         <br />
-        <input type="submit" value="Je m'inscris" className="gpm-button-form" />
+        <button type="submit" className="gpm-button-form">
+          Je me connecte
+        </button>
         <span className="error-message">{errorData}</span>{" "}
       </form>
 

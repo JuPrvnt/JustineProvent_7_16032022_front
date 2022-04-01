@@ -102,7 +102,9 @@ const SignupModal = (props) => {
           <input type="checkbox" value="1" className="checkboxOneInput" />
           <label>Chargé(e) de communication</label>
         </div>
-        <input type="submit" value="Je m'inscris" className="gpm-button-form" />
+        <button type="submit" className="gpm-button-form">
+          Je m'inscris
+        </button>
         <span className="error-message">{errorData}</span>{" "}
       </form>
 
