@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import ConnectionAPI from "../../../service/ConnectionAPI";
 import { useForm } from "react-hook-form";
 import "./_UpdateProfil.scss";
 
@@ -16,25 +16,13 @@ const UpdateProfil = () => {
     formState: { errors },
   } = useForm();
 
+  // connexion avec le back
   const onSubmit = (data) => {
-    console.log(data);
-    let firstName = data.firstName;
-    let lastName = data.lastName;
-    let email = data.email;
-
-    axios({
-      method: "PUT",
-      url: "http://localhost:4200/api/user",
-      headers: {
-        "x-access-token": localStorage.getItem("Token"),
-      },
-      params: { userId: id },
-      data: {
-        id,
-        firstName,
-        lastName,
-        email,
-      },
+    ConnectionAPI.updateProfil({
+      lastName: data.lastName,
+      firstName: data.firstName,
+      email: data.email,
+      password: data.password,
     })
       .then((res) => {
         let userInfo = JSON.stringify(res.data.user);

@@ -3,7 +3,7 @@ import logo from "../../assets/header-logo-white.svg";
 import { Link } from "react-router-dom";
 import "./_Header.scss";
 
-function Header() {
+const Header = () => {
   return (
     <div className="gpm-header">
       <Link to="/" className="gpm-logo">
@@ -11,6 +11,6 @@ function Header() {
       </Link>
     </div>
   );
-}
+};
 
 export default Header;
