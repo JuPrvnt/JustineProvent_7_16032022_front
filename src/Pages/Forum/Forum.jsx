@@ -1,5 +1,7 @@
 import React from "react";
 import Header from "../../components/Header/Header";
+import ConnectionAPI from "../../service/ConnectionAPI";
+import { useNavigate } from "react-router";
 import forumimage from "../../assets/connexion-image.jpg";
 import iconphoto from "../../assets/picture-icon.png";
 import iconpost from "../../assets/advertising-icon.png";
@@ -7,6 +9,14 @@ import { Link } from "react-router-dom";
 import "./_Forum.scss";
 
 const Forum = () => {
+  const navigate = useNavigate();
+
+  const logout = () => {
+    ConnectionAPI.logout();
+    localStorage.removeItem("userInfo");
+    navigate("/");
+  };
+
   return (
     <div className="gpm-block-red-forum">
       <div className="gpm-forum-header">
@@ -18,7 +28,13 @@ const Forum = () => {
           <Link to="/account">
             <p className="gpm-text-forum">Mon compte</p>
           </Link>
-          <button className="gpm-button">Déconnexion</button>
+          <button
+            className="gpm-button"
+            onClick={logout}
+            action={"Déconnexion"}
+          >
+            Déconnexion
+          </button>
         </div>
       </div>
       <div className="gpm-forum-background">

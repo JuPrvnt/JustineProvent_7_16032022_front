@@ -4,11 +4,14 @@ class ConnectionAPI {
   static signup(user) {
     return axios.post("http://localhost:3000/signup", user);
   }
-  static login() {
-    return axios.post("http://localhost:3000/login");
+  static login(user) {
+    return axios.post("http://localhost:3000/login", user);
   }
-  static updateProfil() {
-    return axios.post("http://localhost:3000/updateprofil");
+  static logout(user) {
+    return axios.get("http://localhost:3000/logout", user);
+  }
+  static updateProfil(user) {
+    return axios.get("http://localhost:3000/logout", user);
   }
 }
 

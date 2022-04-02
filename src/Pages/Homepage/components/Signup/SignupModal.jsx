@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import "./_SignupModal.scss";
 
-const SignupModal = (props) => {
+const SignupModal = () => {
   // useState
   const [errorData, setErrorData] = useState("");
 
@@ -44,8 +44,6 @@ const SignupModal = (props) => {
 
   return (
     <div className="modal-body">
-      {props.children}
-
       <form onSubmit={handleSubmit(onSubmit)} className="form">
         <label>
           <p className="gpm-title-form">Mon NOM :</p>
@@ -107,7 +105,6 @@ const SignupModal = (props) => {
         </button>
         <span className="error-message">{errorData}</span>{" "}
       </form>
-
       <div className="modal-background"></div>
     </div>
   );
