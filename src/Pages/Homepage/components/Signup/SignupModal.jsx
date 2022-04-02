@@ -108,7 +108,7 @@ const SignupModal = (props) => {
         <span className="error-message">{errorData}</span>{" "}
       </form>
 
-      <div className="modal-background">{props.children}</div>
+      <div className="modal-background"></div>
     </div>
   );
 };

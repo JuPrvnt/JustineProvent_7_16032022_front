@@ -80,7 +80,7 @@ const LoginModal = (props) => {
         <span className="error-message">{errorData}</span>{" "}
       </form>
 
-      <div className="login-modal-background">{props.children}</div>
+      <div className="login-modal-background"></div>
     </div>
   );
 };
