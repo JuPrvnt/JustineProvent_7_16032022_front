@@ -25,7 +25,7 @@ const Forum = () => {
           <Link to="/connected">
             <p className="gpm-text-forum">Forum</p>
           </Link>
-          <Link to="/account">
+          <Link to="/:id">
             <p className="gpm-text-forum">Mon compte</p>
           </Link>
           <button

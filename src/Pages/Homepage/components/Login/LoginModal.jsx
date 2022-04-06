@@ -34,9 +34,7 @@ const LoginModal = () => {
       })
       .catch((error) => {
         console.log(error);
-        setErrorData(
-          "Vous êtes déjà inscrit à cette adresse mail, connectez-vous !"
-        );
+        setErrorData("Aucun compte n'est associé à cette adresse mail.");
       });
   };
 
@@ -65,8 +63,7 @@ const LoginModal = () => {
             required: true,
             pattern: {
               value: /^((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,64})$/,
-              message:
-                "Votre mot de passe doit contenir au moins 6 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial",
+              message: "Le mot de passe est incorrect.",
             },
           })}
         />
