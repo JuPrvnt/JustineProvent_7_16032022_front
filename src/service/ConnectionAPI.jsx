@@ -1,5 +1,7 @@
 import axios from "axios";
 
+// const token = localStorage.getItem("token");
+
 const API_URL = "http://localhost:3000/";
 
 class ConnectionAPI {
@@ -13,7 +15,8 @@ class ConnectionAPI {
     return axios.get(API_URL + "logout", user);
   }
   static getOneUser() {
-    return axios.get(API_URL + "user");
+    return axios.get(API_URL + ":id");
+    // return axios.get(API_URL + "user" + `${token}`);
   }
 }
 
