@@ -7,9 +7,7 @@ import { Link } from "react-router-dom";
 import "./_Profile.scss";
 
 const Profile = () => {
-  const [lastName, setLastName] = useState();
-  const [firstName, setFirstName] = useState();
-  const [email, setEmail] = useState();
+  const [user, getUser] = useState();
   const navigate = useNavigate();
 
   const logout = () => {
@@ -19,16 +17,19 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    const displayUser = () => {
-      ConnectionAPI.getOneUser()
-        .then((res) => {
-          setLastName(res.data.lastName);
-          setFirstName(res.data.firstName);
-          setEmail(res.data.email);
-        })
-        .catch((error) => console.log(error));
-    };
+    displayOneUser();
   }, []);
+
+  const displayOneUser = () => {
+    ConnectionAPI.getOneUser()
+      .then((res) => {
+        const oneUser = res.data.user.oneUser;
+        getUser(oneUser);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  console.log(user);
 
   return (
     <div>
@@ -54,7 +55,7 @@ const Profile = () => {
         <div className="gpm-profile">
           <form className="gpm-form-profile">
             <label>
-              <p className="gpm-title-profile">Mon NOM : {lastName}</p>
+              <p className="gpm-title-profile">Mon NOM :</p>
             </label>
             <input className="gpm-input-profile" />
             <br />

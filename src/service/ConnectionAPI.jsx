@@ -12,8 +12,8 @@ class ConnectionAPI {
   static logout(user) {
     return axios.get(API_URL + "logout", user);
   }
-  static getOneUser(user) {
-    return axios.get(API_URL + "user", user);
+  static getOneUser() {
+    return axios.get(API_URL + "user");
   }
 }
 
