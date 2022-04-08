@@ -14,6 +14,7 @@ const Forum = () => {
   const logout = () => {
     ConnectionAPI.logout();
     localStorage.removeItem("userInfo");
+    localStorage.removeItem("Token");
     navigate("/");
   };
 
@@ -25,7 +26,7 @@ const Forum = () => {
           <Link to="/connected">
             <p className="gpm-text-forum">Forum</p>
           </Link>
-          <Link to="/:id">
+          <Link to="/profile">
             <p className="gpm-text-forum">Mon compte</p>
           </Link>
           <button

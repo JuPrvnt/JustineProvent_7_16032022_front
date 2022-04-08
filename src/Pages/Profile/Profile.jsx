@@ -10,54 +10,25 @@ const Profile = () => {
   const [lastName, setLastName] = useState();
   const [firstName, setFirstName] = useState();
   const [email, setEmail] = useState();
-  const [user, getUser] = useState();
-  const token = localStorage.getItem("token");
-  const userInfo = localStorage.getItem("userInfo");
 
   const navigate = useNavigate();
 
   const logout = () => {
     ConnectionAPI.logout();
     localStorage.removeItem("userInfo");
+    localStorage.removeItem("Token");
     navigate("/");
   };
 
   useEffect(() => {
-    displayOneUser();
-  }, []);
-
-  const displayOneUser = () => {
     ConnectionAPI.getOneUser()
       .then((res) => {
-        const lastName = res.data.lastName;
-        const firstName = res.data.firstName;
-        const email = res.data.email;
-        console.log(lastName);
-        console.log(firstName);
-        console.log(email);
+        setLastName(res.data.lastName);
+        setFirstName(res.data.firstName);
+        setEmail(res.data.email);
       })
       .catch((error) => console.log(error));
-  };
-
-  displayOneUser();
-  console.log(lastName);
-
-  /*
-  useEffect(() => {
-    const displayOneUser = () => {
-      ConnectionAPI.getOneUser()
-        .then((res) => {
-          setFirstName(res.data.firstName);
-          setLastName(res.data.lastName);
-          setEmail(res.data.email);
-        })
-        .catch((error) => console.log(error));
-    };
-
-    displayOneUser();
-
   }, []);
-  */
 
   return (
     <div>
@@ -67,7 +38,7 @@ const Profile = () => {
           <Link to="/connected">
             <p className="gpm-text-forum">Forum</p>
           </Link>
-          <Link to="/:id">
+          <Link to="/profile">
             <p className="gpm-text-forum">Mon compte</p>
           </Link>
           <button
@@ -83,17 +54,23 @@ const Profile = () => {
         <div className="gpm-profile">
           <form className="gpm-form-profile">
             <label>
-              <p className="gpm-title-profile">Mon NOM : {lastName}</p>
+              <p className="gpm-title-profile" placeholder={lastName}>
+                Mon NOM : {lastName}
+              </p>
             </label>
             <input className="gpm-input-profile" />
             <br />
             <label>
-              <p className="gpm-title-profile">Mon Prénom :</p>
+              <p className="gpm-title-profile" placeholder={firstName}>
+                Mon Prénom :
+              </p>
             </label>
             <input className="gpm-input-profile" />
             <br />
             <label>
-              <p className="gpm-title-profile">Mon adresse email :</p>
+              <p className="gpm-title-profile" placeholder={email}>
+                Mon adresse email :
+              </p>
             </label>
             <input className="gpm-input-profile" />
             <br />

@@ -36,9 +36,7 @@ const SignupModal = () => {
       })
       .catch((error) => {
         console.log(error);
-        setErrorData(
-          "Vous êtes déjà inscrit à cette adresse mail, connectez-vous !"
-        );
+        setErrorData("Vous êtes déjà inscrit, veuillez-vous connecter.");
       });
   };
 
