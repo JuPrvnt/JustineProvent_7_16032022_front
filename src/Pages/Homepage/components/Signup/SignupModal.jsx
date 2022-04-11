@@ -2,19 +2,11 @@ import React from "react";
 import ConnectionAPI from "../../../../service/ConnectionAPI";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
 import "./_SignupModal.scss";
 
 const SignupModal = () => {
-  // useState
-  const [errorData, setErrorData] = useState("");
-
   // register
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   // navigate
   const navigate = useNavigate();
@@ -26,6 +18,7 @@ const SignupModal = () => {
       firstName: data.firstName,
       email: data.email,
       password: data.password,
+      isAdmin: data.isAdmin,
     })
       .then((res) => {
         let token = res.data.token;
@@ -34,10 +27,7 @@ const SignupModal = () => {
         localStorage.setItem("userInfo", userInfo);
         navigate("/connected");
       })
-      .catch((error) => {
-        console.log(error);
-        setErrorData("Vous êtes déjà inscrit, veuillez-vous connecter.");
-      });
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -52,7 +42,6 @@ const SignupModal = () => {
             required: true,
           })}
         />
-        {errors.lastName && <span>{errors.lastName.message}</span>}
         <br />
         <label>
           <p className="gpm-title-form">Mon Prénom :</p>
@@ -63,7 +52,6 @@ const SignupModal = () => {
             required: true,
           })}
         />
-        {errors.firstName && <span>{errors.firstName.message}</span>}
         <br />
         <label>
           <p className="gpm-title-form">Mon adresse email :</p>
@@ -75,7 +63,6 @@ const SignupModal = () => {
             message: "Vous devez entrer une adresse mail valide",
           })}
         />
-        {errors.email && <span>{errors.email.message}</span>}
         <br />
         <label>
           <p className="gpm-title-form">Mon mot de passe</p>
@@ -92,7 +79,6 @@ const SignupModal = () => {
             },
           })}
         />
-        {errors.password && <span>{errors.password.message}</span>}
         <br />
         <div className="gpm-form-role">
           <input type="checkbox" value="1" className="checkboxOneInput" />
@@ -101,7 +87,6 @@ const SignupModal = () => {
         <button type="submit" className="gpm-button-form">
           Je m'inscris
         </button>
-        <span className="error-message">{errorData}</span>{" "}
       </form>
       <div className="modal-background"></div>
     </div>

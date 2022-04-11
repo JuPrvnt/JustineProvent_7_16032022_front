@@ -3,6 +3,7 @@ import Header from "../../components/Header/Header";
 import profileimage from "../../assets/my-profile-image.jpg";
 import ConnectionAPI from "../../service/ConnectionAPI";
 import { useNavigate } from "react-router";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import "./_Profile.scss";
 
@@ -10,6 +11,8 @@ const Profile = () => {
   const [lastName, setLastName] = useState();
   const [firstName, setFirstName] = useState();
   const [email, setEmail] = useState();
+
+  const { register, handleSubmit } = useForm();
 
   const navigate = useNavigate();
 
@@ -29,6 +32,19 @@ const Profile = () => {
       })
       .catch((error) => console.log(error));
   }, []);
+
+  const onSubmit = (data) => {
+    ConnectionAPI.modifyUser({
+      lastName: data.lastName,
+      firstName: data.firstName,
+      email: data.email,
+    })
+      .then((res) => {
+        let userInfo = JSON.stringify(res.data);
+        localStorage.setItem("userInfo", userInfo);
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div>
@@ -52,41 +68,60 @@ const Profile = () => {
       </div>
       <div className="gpm-profile-background">
         <div className="gpm-profile">
-          <form className="gpm-form-profile">
+          <form onSubmit={handleSubmit(onSubmit)} className="gpm-form-profile">
             <label>
-              <p className="gpm-title-profile" placeholder={lastName}>
-                Mon NOM : {lastName}
-              </p>
+              <p className="gpm-title-profile">Mon NOM :</p>
             </label>
-            <input className="gpm-input-profile" />
+            <input
+              placeholder={lastName}
+              className="gpm-input-profile"
+              {...register("lastName", {
+                required: true,
+              })}
+            />
             <br />
             <label>
-              <p className="gpm-title-profile" placeholder={firstName}>
-                Mon Prénom :
-              </p>
+              <p className="gpm-title-profile">Mon Prénom :</p>
             </label>
-            <input className="gpm-input-profile" />
+            <input
+              className="gpm-input-profile"
+              placeholder={firstName}
+              {...register("firstName", {
+                required: true,
+              })}
+            />
             <br />
             <label>
-              <p className="gpm-title-profile" placeholder={email}>
-                Mon adresse email :
-              </p>
+              <p className="gpm-title-profile">Mon adresse email :</p>
             </label>
-            <input className="gpm-input-profile" />
+            <input
+              className="gpm-input-profile"
+              placeholder={email}
+              {...register("email", {
+                required: true,
+                message: "Vous devez entrer une adresse mail valide",
+              })}
+            />
             <br />
             <label>
               <p className="gpm-title-profile">Mon mot de passe</p>
             </label>
-            <input className="gpm-input-profile" />
+            <input
+              className="gpm-input-profile"
+              type="password"
+              {...register("password", {
+                required: true,
+                pattern: {
+                  value: /^((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,64})$/,
+                  message:
+                    "Votre mot de passe doit contenir au moins 6 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial",
+                },
+              })}
+            />
             <br />
             <input
               type="submit"
               value="Modifier"
-              className="gpm-button-profile"
-            />
-            <input
-              type="submit"
-              value="Supprimer"
               className="gpm-button-profile"
             />
           </form>
