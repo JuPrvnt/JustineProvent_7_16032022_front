@@ -17,7 +17,7 @@ class ConnectionAPI {
 
     return axios.get(API_URL, {
       headers: {
-        Authorization: "Bearer " + token,
+        authorization: "Bearer " + token,
       },
     });
   }
@@ -25,6 +25,15 @@ class ConnectionAPI {
     const token = localStorage.getItem("Token");
 
     return axios.put(API_URL, {
+      headers: {
+        authorization: "Bearer " + token,
+      },
+    });
+  }
+  static deleteUser() {
+    const token = localStorage.getItem("Token");
+
+    return axios.delete(API_URL, {
       headers: {
         Authorization: "Bearer " + token,
       },

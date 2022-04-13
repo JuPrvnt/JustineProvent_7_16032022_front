@@ -34,16 +34,45 @@ const Profile = () => {
   }, []);
 
   const onSubmit = (data) => {
+    const userInfo = localStorage.getItem("userInfo");
+    const id = userInfo._id;
+    let lastNameModified = data.lastName;
+    let firstNameModified = data.firstName;
+    let emailModified = data.email;
+
     ConnectionAPI.modifyUser({
-      lastName: data.lastName,
-      firstName: data.firstName,
-      email: data.email,
+      params: { userId: id },
+      data: {
+        id,
+        lastNameModified,
+        firstNameModified,
+        emailModified,
+      },
     })
       .then((res) => {
         let userInfo = JSON.stringify(res.data);
         localStorage.setItem("userInfo", userInfo);
       })
       .catch((error) => console.log(error));
+  };
+
+  const deleteUser = () => {
+    let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    let userId = userInfo._id;
+
+    ConnectionAPI.deleteUser({
+      params: { userId },
+      data: {
+        id: userId,
+      },
+    })
+      .then((res) => {
+        localStorage.clear();
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -103,27 +132,18 @@ const Profile = () => {
               })}
             />
             <br />
-            <label>
-              <p className="gpm-title-profile">Mon mot de passe</p>
-            </label>
-            <input
-              className="gpm-input-profile"
-              type="password"
-              {...register("password", {
-                required: true,
-                pattern: {
-                  value: /^((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,64})$/,
-                  message:
-                    "Votre mot de passe doit contenir au moins 6 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial",
-                },
-              })}
-            />
-            <br />
             <input
               type="submit"
               value="Modifier"
               className="gpm-button-profile"
             />
+            <button
+              className="gpm-button-profile"
+              onClick={deleteUser}
+              action={"Suppression"}
+            >
+              Supprimer
+            </button>{" "}
           </form>
         </div>
         <div className="gpm-profile-white"></div>
