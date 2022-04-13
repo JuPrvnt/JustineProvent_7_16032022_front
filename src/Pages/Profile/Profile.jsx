@@ -35,20 +35,9 @@ const Profile = () => {
 
   const onSubmit = (data) => {
     const userInfo = localStorage.getItem("userInfo");
-    const id = userInfo._id;
-    let lastNameModified = data.lastName;
-    let firstNameModified = data.firstName;
-    let emailModified = data.email;
+    data.userId = userInfo.id;
 
-    ConnectionAPI.modifyUser({
-      params: { userId: id },
-      data: {
-        id,
-        lastNameModified,
-        firstNameModified,
-        emailModified,
-      },
-    })
+    ConnectionAPI.modifyUser(data)
       .then((res) => {
         let userInfo = JSON.stringify(res.data);
         localStorage.setItem("userInfo", userInfo);
@@ -57,16 +46,8 @@ const Profile = () => {
   };
 
   const deleteUser = () => {
-    let userInfo = JSON.parse(localStorage.getItem("userInfo"));
-    let userId = userInfo._id;
-
-    ConnectionAPI.deleteUser({
-      params: { userId },
-      data: {
-        id: userId,
-      },
-    })
-      .then((res) => {
+    ConnectionAPI.deleteUser()
+      .then(() => {
         localStorage.clear();
         navigate("/");
       })

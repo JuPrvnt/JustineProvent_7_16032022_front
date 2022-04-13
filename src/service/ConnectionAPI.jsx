@@ -21,12 +21,12 @@ class ConnectionAPI {
       },
     });
   }
-  static modifyUser() {
+  static modifyUser(user) {
     const token = localStorage.getItem("Token");
 
-    return axios.put(API_URL, {
+    return axios.put(API_URL, user, {
       headers: {
-        authorization: "Bearer " + token,
+        Authorization: "Bearer " + token,
       },
     });
   }
