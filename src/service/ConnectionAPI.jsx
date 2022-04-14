@@ -39,6 +39,9 @@ class ConnectionAPI {
       },
     });
   }
+  static createPost(post) {
+    return axios.post(API_URL + "post", post);
+  }
 }
 
 export default ConnectionAPI;

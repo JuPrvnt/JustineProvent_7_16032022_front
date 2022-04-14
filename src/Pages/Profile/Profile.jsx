@@ -83,6 +83,7 @@ const Profile = () => {
               <p className="gpm-title-profile">Mon NOM :</p>
             </label>
             <input
+              type="text"
               placeholder={lastName}
               className="gpm-input-profile"
               {...register("lastName", {
@@ -94,8 +95,9 @@ const Profile = () => {
               <p className="gpm-title-profile">Mon Prénom :</p>
             </label>
             <input
-              className="gpm-input-profile"
+              type="text"
               placeholder={firstName}
+              className="gpm-input-profile"
               {...register("firstName", {
                 required: true,
               })}
@@ -105,8 +107,9 @@ const Profile = () => {
               <p className="gpm-title-profile">Mon adresse email :</p>
             </label>
             <input
-              className="gpm-input-profile"
+              type="text"
               placeholder={email}
+              className="gpm-input-profile"
               {...register("email", {
                 required: true,
                 message: "Vous devez entrer une adresse mail valide",

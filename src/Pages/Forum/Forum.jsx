@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import ConnectionAPI from "../../service/ConnectionAPI";
 import { useNavigate } from "react-router";
@@ -6,9 +6,15 @@ import forumimage from "../../assets/connexion-image.jpg";
 import iconphoto from "../../assets/picture-icon.png";
 import iconpost from "../../assets/advertising-icon.png";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import "./_Forum.scss";
 
 const Forum = () => {
+  const [post, setPost] = useState();
+  const [file, setFile] = useState(false);
+
+  const { register, handleSubmit } = useForm();
+
   const navigate = useNavigate();
 
   const logout = () => {
@@ -16,6 +22,15 @@ const Forum = () => {
     localStorage.removeItem("userInfo");
     localStorage.removeItem("Token");
     navigate("/");
+  };
+
+  const onSubmit = (data) => {
+    console.log(data);
+    ConnectionAPI.createPost({
+      content: data.content,
+      imageUrl: data.imageUrl,
+    })
+    .catch((error) => console.log(error));
   };
 
   return (
@@ -43,18 +58,35 @@ const Forum = () => {
         <div className="gpm-block-forum">
           <div className="gpm-to-post">
             <div className="gpm-header-to-post">
-              <div className="gpm-letter-red">J</div>
-              <div className="gpm-post-content"></div>
-            </div>
-            <div className="gpm-icons-buttons">
-              <div className="gpm-icon-photo">
-                <img className="gpm-icon" src={iconphoto} alt="icon" />
-                <p className="gpm-text-photo">Photo/vidéo</p>
-              </div>
-              <div className="gpm-button-post">
-                <img className="gpm-icon" src={iconpost} alt="post" />
-                <p className="gpm-text-post">Publier</p>
-              </div>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <input
+                  className="gpm-post-content"
+                  type="textarea"
+                  placeholder="Quoi de neuf ?"
+                  {...register("content", {
+                    required: true,
+                  })}
+                />
+                <div className="gpm-icon-photo">
+                  <div className="gpm-icons-buttons">
+                    <img className="gpm-icon" src={iconphoto} alt="icon" />
+                    <input
+                      className="gpm-text-photo"
+                      type="file"
+                      accept="image/*"
+                      {...register("imageUrl", {
+                        required: true,
+                      })}
+                    />
+                  </div>
+                  <div className="gpm-button-post">
+                    <img className="gpm-icon" src={iconpost} alt="post" />
+                    <button type="submit" className="gpm-text-post">
+                      Publier
+                    </button>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
           <div className="gpm-posted"></div>
