@@ -1,0 +1,83 @@
+$color-primary: #fc2c04;
+$color-secondary: #ffe2d4;
+$color-background: #6f6f6f;
+
+.gpm-block-forum {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  height: 600px;
+  background-color: white;
+  z-index: 1;
+  position: absolute;
+  margin-top: 250px;
+}
+
+.gpm-to-post {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 100%;
+  background-color: $color-secondary;
+  border-radius: 25px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.gpm-header-to-post {
+  display: flex;
+  padding: 40px;
+}
+
+.gpm-post-content {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  width: 480px;
+  height: 40px;
+  border-radius: 25px;
+}
+
+.gpm-icons-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.gpm-icon {
+  width: 35px;
+  height: 35px;
+  padding: 20px;
+}
+
+.gpm-posted {
+  display: flex;
+  width: 80%;
+  height: 400px;
+  background-color: $color-secondary;
+  border-radius: 25px;
+  margin-bottom: 50px;
+}
+
+.gpm-icon-photo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.gpm-button-post {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.gpm-text-photo {
+  color: $color-background;
+  font-size: 24px;
+}
+
+.gpm-text-post {
+  color: $color-background;
+  font-size: 24px;
+}

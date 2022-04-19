@@ -41,11 +41,13 @@ class ConnectionAPI {
   }
   static createPost(post) {
     const token = localStorage.getItem("Token");
+    let dataSend = new FormData();
+    dataSend.append("content", post.content);
+    dataSend.append("image", post.image);
 
-    return axios.post(API_URL + "post", post, {
+    return axios.post(API_URL + "post", dataSend, {
       headers: {
         authorization: "Bearer " + token,
-        "Content-Type": "application/json",
       },
     });
   }

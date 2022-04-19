@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
+import forumimage from "../../assets/connexion-image.jpg";
 import Header from "../../components/Header/Header";
 import ConnectionAPI from "../../service/ConnectionAPI";
-import { useNavigate } from "react-router";
-import forumimage from "../../assets/connexion-image.jpg";
-import iconphoto from "../../assets/picture-icon.png";
-import iconpost from "../../assets/advertising-icon.png";
-import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import Post from "./Components/Post";
 import "./_Forum.scss";
 
 const Forum = () => {
-  const { register, handleSubmit } = useForm();
-  const [dataPosts, setDataPosts] = useState();
+  const [dataPosts, setDataPosts] = useState([]);
 
   const navigate = useNavigate();
 
@@ -22,16 +19,10 @@ const Forum = () => {
     navigate("/");
   };
 
-  const onSubmit = (data) => {
-    ConnectionAPI.createPost({
-      content: data.content,
-      file: data.file,
-    }).catch((error) => console.log(error));
-  };
-
   useEffect(() => {
     ConnectionAPI.getAllPosts().then((res) => {
       setDataPosts(res.data);
+      console.log(res.data);
     });
   }, []);
 
@@ -57,46 +48,11 @@ const Forum = () => {
       </div>
       <div className="gpm-forum-background">
         <img className="gpm-forum-image" src={forumimage} alt="forum" />
-        <div className="gpm-block-forum">
-          <div className="gpm-to-post">
-            <div className="gpm-header-to-post">
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <input
-                  className="gpm-post-content"
-                  type="textarea"
-                  placeholder="Quoi de neuf ?"
-                  {...register("content", {
-                    required: true,
-                  })}
-                />
-                <div className="gpm-icon-photo">
-                  <div className="gpm-icons-buttons">
-                    <img className="gpm-icon" src={iconphoto} alt="icon" />
-                    <input
-                      className="gpm-text-photo"
-                      type="file"
-                      accept="image/*"
-                      {...register("file", {
-                        required: false,
-                      })}
-                    />
-                  </div>
-                  <div className="gpm-button-post">
-                    <img className="gpm-icon" src={iconpost} alt="post" />
-                    <button type="submit" className="gpm-text-post">
-                      Publier
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div className="gpm-posted"></div>
-        </div>
+        <Post></Post>
         <div>
-          <div className="gpm-posts-display" type="text" value={dataPosts}>
-            Test
-          </div>
+          {Array.isArray(dataPosts)
+            ? dataPosts.map((post) => <div>{post.content}</div>)
+            : null}
         </div>
       </div>
     </div>
