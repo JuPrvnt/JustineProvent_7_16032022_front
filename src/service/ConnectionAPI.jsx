@@ -49,6 +49,15 @@ class ConnectionAPI {
       },
     });
   }
+  static getAllPosts(post) {
+    const token = localStorage.getItem("Token");
+
+    return axios.post(API_URL + "post", post, {
+      headers: {
+        authorization: "Bearer " + token,
+      },
+    });
+  }
 }
 
 export default ConnectionAPI;

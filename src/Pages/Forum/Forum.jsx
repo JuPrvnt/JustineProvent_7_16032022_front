@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../../components/Header/Header";
 import ConnectionAPI from "../../service/ConnectionAPI";
 import { useNavigate } from "react-router";
@@ -11,6 +11,7 @@ import "./_Forum.scss";
 
 const Forum = () => {
   const { register, handleSubmit } = useForm();
+  const [dataPosts, setDataPosts] = useState();
 
   const navigate = useNavigate();
 
@@ -22,13 +23,17 @@ const Forum = () => {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
-
     ConnectionAPI.createPost({
       content: data.content,
       file: data.file,
     }).catch((error) => console.log(error));
   };
+
+  useEffect(() => {
+    ConnectionAPI.getAllPosts().then((res) => {
+      setDataPosts(res.data);
+    });
+  }, []);
 
   return (
     <div className="gpm-block-red-forum">
@@ -87,6 +92,11 @@ const Forum = () => {
             </div>
           </div>
           <div className="gpm-posted"></div>
+        </div>
+        <div>
+          <div className="gpm-posts-display" type="text" value={dataPosts}>
+            Test
+          </div>
         </div>
       </div>
     </div>
