@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "../../components/Header/Header";
 import ConnectionAPI from "../../service/ConnectionAPI";
 import { useNavigate } from "react-router";
@@ -10,9 +10,6 @@ import { useForm } from "react-hook-form";
 import "./_Forum.scss";
 
 const Forum = () => {
-  const [post, setPost] = useState();
-  const [file, setFile] = useState(false);
-
   const { register, handleSubmit } = useForm();
 
   const navigate = useNavigate();
@@ -26,11 +23,11 @@ const Forum = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+
     ConnectionAPI.createPost({
       content: data.content,
-      imageUrl: data.imageUrl,
-    })
-    .catch((error) => console.log(error));
+      file: data.file,
+    }).catch((error) => console.log(error));
   };
 
   return (
@@ -74,8 +71,8 @@ const Forum = () => {
                       className="gpm-text-photo"
                       type="file"
                       accept="image/*"
-                      {...register("imageUrl", {
-                        required: true,
+                      {...register("file", {
+                        required: false,
                       })}
                     />
                   </div>

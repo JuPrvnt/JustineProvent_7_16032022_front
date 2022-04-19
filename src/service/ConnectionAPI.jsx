@@ -40,7 +40,14 @@ class ConnectionAPI {
     });
   }
   static createPost(post) {
-    return axios.post(API_URL + "post", post);
+    const token = localStorage.getItem("Token");
+
+    return axios.post(API_URL + "post", post, {
+      headers: {
+        authorization: "Bearer " + token,
+        "Content-Type": "application/json",
+      },
+    });
   }
 }
 
