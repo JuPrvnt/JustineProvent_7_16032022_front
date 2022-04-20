@@ -51,10 +51,10 @@ class ConnectionAPI {
       },
     });
   }
-  static getAllPosts(post) {
+  static getAllPosts() {
     const token = localStorage.getItem("Token");
 
-    return axios.post(API_URL + "post", post, {
+    return axios.get(API_URL + "post", {
       headers: {
         authorization: "Bearer " + token,
       },

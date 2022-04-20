@@ -16,42 +16,35 @@ const Post = () => {
   };
 
   return (
-    <div className="gpm-block-forum">
-      <div className="gpm-to-post">
-        <div className="gpm-header-to-post">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <input
-              className="gpm-post-content"
-              type="textarea"
-              placeholder="Quoi de neuf ?"
-              {...register("content", {
-                required: true,
-              })}
-            />
-            <div className="gpm-icon-photo">
-              <div className="gpm-icons-buttons">
-                <img className="gpm-icon" src={iconphoto} alt="icon" />
-                <input
-                  className="gpm-text-photo"
-                  type="file"
-                  accept="image/*"
-                  {...register("image", {
-                    required: false,
-                  })}
-                />
-              </div>
-              <div className="gpm-button-post">
-                <img className="gpm-icon" src={iconpost} alt="post" />
-                <button type="submit" className="gpm-text-post">
-                  Publier
-                </button>
-              </div>
-            </div>
-          </form>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input
+        className="gpm-post-content"
+        type="textarea"
+        placeholder="Quoi de neuf ?"
+        {...register("content", {
+          required: true,
+        })}
+      />
+      <div className="gpm-icons">
+        <div className="gpm-icons-buttons">
+          <img className="gpm-icon" src={iconphoto} alt="icon" />
+          <input
+            className="gpm-text-photo"
+            type="file"
+            accept="image/*"
+            {...register("image", {
+              required: false,
+            })}
+          />
+        </div>
+        <div className="gpm-button-post">
+          <img className="gpm-icon" src={iconpost} alt="post" />
+          <button type="submit" className="gpm-text-post">
+            Publier
+          </button>
         </div>
       </div>
-      <div className="gpm-posted"></div>
-    </div>
+    </form>
   );
 };
 

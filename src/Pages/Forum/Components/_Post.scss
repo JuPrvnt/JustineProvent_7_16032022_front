@@ -2,34 +2,6 @@ $color-primary: #fc2c04;
 $color-secondary: #ffe2d4;
 $color-background: #6f6f6f;
 
-.gpm-block-forum {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 80%;
-  height: 600px;
-  background-color: white;
-  z-index: 1;
-  position: absolute;
-  margin-top: 250px;
-}
-
-.gpm-to-post {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  height: 100%;
-  background-color: $color-secondary;
-  border-radius: 25px;
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
-.gpm-header-to-post {
-  display: flex;
-  padding: 40px;
-}
-
 .gpm-post-content {
   display: flex;
   flex-direction: row;
@@ -51,19 +23,11 @@ $color-background: #6f6f6f;
   padding: 20px;
 }
 
-.gpm-posted {
-  display: flex;
-  width: 80%;
-  height: 400px;
-  background-color: $color-secondary;
-  border-radius: 25px;
-  margin-bottom: 50px;
-}
-
-.gpm-icon-photo {
+.gpm-icons {
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 100%;
 }
 
 .gpm-button-post {
@@ -80,4 +44,13 @@ $color-background: #6f6f6f;
 .gpm-text-post {
   color: $color-background;
   font-size: 24px;
+}
+
+.gpm-posted {
+  display: flex;
+  width: 80%;
+  height: 400px;
+  background-color: $color-secondary;
+  border-radius: 25px;
+  margin-bottom: 50px;
 }
