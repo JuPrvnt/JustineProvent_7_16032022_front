@@ -84,6 +84,7 @@ $color-background: #6f6f6f;
   border-radius: 25px;
   margin-top: 50px;
   margin-bottom: 50px;
+  align-items: center;
 }
 
 .gpm-header-to-post {
@@ -92,10 +93,14 @@ $color-background: #6f6f6f;
   flex-direction: column;
 }
 
-.gpm-forum-posts {
-  background-color: white;
-  z-index: 1;
-  margin: 10px auto;
-  width: 50%;
-  min-width: 360px;
+.gpm-posted {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.gpm-posted-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }

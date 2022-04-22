@@ -60,6 +60,15 @@ class ConnectionAPI {
       },
     });
   }
+  static deletePost() {
+    const token = localStorage.getItem("Token");
+
+    return axios.delete(API_URL + "post", {
+      headers: {
+        authorization: "Bearer " + token,
+      },
+    });
+  }
 }
 
 export default ConnectionAPI;
