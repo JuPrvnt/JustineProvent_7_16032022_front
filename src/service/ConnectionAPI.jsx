@@ -89,5 +89,14 @@ class ConnectionAPI {
       },
     });
   }
+  static deleteComment() {
+    const token = localStorage.getItem("Token");
+
+    return axios.delete(API_URL + "comment", {
+      headers: {
+        authorization: "Bearer " + token,
+      },
+    });
+  }
 }
 export default ConnectionAPI;

@@ -11,6 +11,7 @@ const Profile = () => {
   const [lastName, setLastName] = useState();
   const [firstName, setFirstName] = useState();
   const [email, setEmail] = useState();
+  const [image, setImage] = useState();
 
   const { register, handleSubmit } = useForm();
 
@@ -29,6 +30,7 @@ const Profile = () => {
         setLastName(res.data.lastName);
         setFirstName(res.data.firstName);
         setEmail(res.data.email);
+        setImage(res.data.imageUrl);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -79,6 +81,9 @@ const Profile = () => {
       <div className="gpm-profile-background">
         <div className="gpm-profile">
           <form onSubmit={handleSubmit(onSubmit)} className="gpm-form-profile">
+            <label>
+              <img className="gpm-avatar" src={image}></img>
+            </label>
             <label>
               <p className="gpm-title-profile">Mon NOM :</p>
             </label>

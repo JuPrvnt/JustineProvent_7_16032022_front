@@ -27,6 +27,16 @@ const Comment = () => {
       });
   }, []);
 
+  const deleteComment = () => {
+    ConnectionAPI.deleteComment()
+      .then(() => {
+        navigate("/connected");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -49,17 +59,17 @@ const Comment = () => {
 
       {Array.isArray(dataComments)
         ? dataComments.map((comment) => (
-            <div key={comment.commentId} className="gpm-posted">
-              <div className="gpm-posted-header">
+            <div key={comment.commentId} className="gpm-comment">
+              <div className="gpm-comment-header">
                 {comment.user.firstName} a publié :
               </div>
-              <div className="gpm-posted-content">
+              <div className="gpm-comment-content">
                 <p>{comment.content}</p>
               </div>
-              <div className="gpm-posted-footer">
+              <div className="gpm-comment-footer">
                 <button
-                  className="gpm-posted-buttons"
-                  //onClick={deleteComment}
+                  className="gpm-comment-buttons"
+                  onClick={deleteComment}
                   action={"Suppression"}
                 >
                   Supprimer

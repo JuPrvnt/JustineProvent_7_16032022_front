@@ -10,9 +10,6 @@ import Comment from "./Components/Comment";
 import "./_Forum.scss";
 
 const Forum = () => {
-  const { register, handleSubmit } = useForm();
-  const [dataPosts, setDataPosts] = useState([]);
-
   const navigate = useNavigate();
 
   const logout = () => {
@@ -20,27 +17,6 @@ const Forum = () => {
     localStorage.removeItem("userInfo");
     localStorage.removeItem("Token");
     navigate("/");
-  };
-
-  useEffect(() => {
-    ConnectionAPI.getAllPosts()
-      .then((res) => {
-        setDataPosts(res.data);
-        navigate("/connected");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  const deletePost = () => {
-    ConnectionAPI.deletePost()
-      .then(() => {
-        navigate("/connected");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   };
 
   return (
@@ -67,35 +43,7 @@ const Forum = () => {
         <div className="gpm-forum-background">
           <img className="gpm-forum-image" src={forumimage} alt="forum" />
           <div className="gpm-block-forum">
-            <div className="gpm-to-post">
-              <div className="gpm-header-to-post">
-                <Post></Post>
-                {Array.isArray(dataPosts)
-                  ? dataPosts.map((post) => (
-                      <div key={post.userId} className="gpm-posted">
-                        <div className="gpm-posted-header">
-                          {post.user.firstName}, voici votre fil d'actualités...
-                        </div>
-                        <div className="gpm-posted-content">
-                          {post.user.lastName} {post.user.firstName}
-                          <p>{post.createdAt}</p>
-                          <p>{post.content}</p>
-                          <img src={post.image}></img>
-                        </div>
-                        <div className="gpm-posted-footer">
-                          <button
-                            className="gpm-posted-buttons"
-                            onClick={deletePost}
-                            action={"Suppression"}
-                          >
-                            Supprimer
-                          </button>{" "}
-                        </div>
-                      </div>
-                    ))
-                  : null}
-              </div>
-            </div>
+            <Post></Post>
             <Comment></Comment>
           </div>
         </div>
