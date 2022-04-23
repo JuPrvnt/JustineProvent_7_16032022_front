@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import iconphoto from "../../../assets/picture-icon.png";
 import iconpost from "../../../assets/advertising-icon.png";
@@ -8,11 +9,17 @@ import "./_Post.scss";
 const Post = () => {
   const { register, handleSubmit } = useForm();
 
+  const navigate = useNavigate();
+
   const onSubmit = (data) => {
     ConnectionAPI.createPost({
       content: data.content,
       image: data.image[0],
-    }).catch((error) => console.log(error));
+    })
+      .then(() => {
+        navigate("/connected");
+      })
+      .catch((error) => console.log(error));
   };
 
   return (

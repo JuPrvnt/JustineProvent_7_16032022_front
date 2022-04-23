@@ -6,6 +6,7 @@ import forumimage from "../../assets/connexion-image.jpg";
 import Header from "../../components/Header/Header";
 import ConnectionAPI from "../../service/ConnectionAPI";
 import Post from "./Components/Post";
+import Comment from "./Components/Comment";
 import "./_Forum.scss";
 
 const Forum = () => {
@@ -25,7 +26,7 @@ const Forum = () => {
     ConnectionAPI.getAllPosts()
       .then((res) => {
         setDataPosts(res.data);
-        console.log(res.data);
+        navigate("/connected");
       })
       .catch((err) => {
         console.log(err);
@@ -82,9 +83,6 @@ const Forum = () => {
                           <img src={post.image}></img>
                         </div>
                         <div className="gpm-posted-footer">
-                          <button type="submit" className="gpm-posted-buttons">
-                            Modifier
-                          </button>
                           <button
                             className="gpm-posted-buttons"
                             onClick={deletePost}
@@ -98,6 +96,7 @@ const Forum = () => {
                   : null}
               </div>
             </div>
+            <Comment></Comment>
           </div>
         </div>
       </>

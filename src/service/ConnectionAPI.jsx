@@ -69,6 +69,25 @@ class ConnectionAPI {
       },
     });
   }
-}
+  static createComment(comment) {
+    const token = localStorage.getItem("Token");
+    let dataSend = new FormData();
+    dataSend.append("content", comment.content);
 
+    return axios.post(API_URL + "comment", dataSend, {
+      headers: {
+        authorization: "Bearer " + token,
+      },
+    });
+  }
+  static getAllComments() {
+    const token = localStorage.getItem("Token");
+
+    return axios.get(API_URL + "comment", {
+      headers: {
+        authorization: "Bearer " + token,
+      },
+    });
+  }
+}
 export default ConnectionAPI;
