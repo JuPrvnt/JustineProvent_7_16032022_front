@@ -6,7 +6,11 @@ import "./_SignupModal.scss";
 
 const SignupModal = () => {
   // register
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   // navigate
   const navigate = useNavigate();
@@ -60,7 +64,6 @@ const SignupModal = () => {
           className="gpm-input-form"
           {...register("email", {
             required: true,
-            message: "Vous devez entrer une adresse mail valide",
           })}
         />
         <br />
@@ -79,6 +82,7 @@ const SignupModal = () => {
             },
           })}
         />
+        {errors.password && <span>{errors.password.message}</span>}
         <br />
         <div className="gpm-form-role">
           <input type="checkbox" value="1" className="checkboxOneInput" />
