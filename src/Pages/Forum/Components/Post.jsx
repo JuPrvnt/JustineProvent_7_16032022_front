@@ -4,11 +4,15 @@ import { useForm } from "react-hook-form";
 import iconphoto from "../../../assets/picture-icon.png";
 import iconpost from "../../../assets/advertising-icon.png";
 import ConnectionAPI from "../../../service/ConnectionAPI";
+import dayjs from "dayjs";
 import "./_Post.scss";
+require("dayjs/locale/fr");
 
 const Post = () => {
   const { register, handleSubmit } = useForm();
   const [dataPosts, setDataPosts] = useState([]);
+  const relativeTime = require("dayjs/plugin/relativeTime");
+  dayjs.extend(relativeTime);
 
   const navigate = useNavigate();
 
@@ -94,7 +98,7 @@ const Post = () => {
                 </div>
                 <div className="gpm-posted-content">
                   {post.user.lastName} {post.user.firstName}
-                  <p>{post.createdAt}</p>
+                  <p>{dayjs(post.createdAt).locale("fr").fromNow()}</p>
                   <p>{post.content}</p>
                   <img src={post.image}></img>
                 </div>
