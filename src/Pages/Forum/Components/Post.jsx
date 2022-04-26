@@ -93,12 +93,10 @@ const Post = () => {
       </div>
 
       <div className="gpm-posted">
+        <div className="gpm-posted-header">Voici votre fil d'actualités...</div>
         {Array.isArray(dataPosts)
           ? dataPosts.map((post) => (
               <div key={post.userId}>
-                <div className="gpm-posted-header">
-                  {post.user.firstName}, voici votre fil d'actualités...
-                </div>
                 <div className="gpm-posted-content">
                   <p className="gpm-posted-name">
                     {post.user.lastName} {post.user.firstName}
