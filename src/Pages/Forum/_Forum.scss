@@ -3,13 +3,19 @@ $color-secondary: #ffe2d4;
 $color-background: #6f6f6f;
 
 .gpm-block-red-forum {
-  width: 100%;
-  height: 1000px;
+  height: 1500px;
   background-color: $color-primary;
 }
 
 .gpm-forum-header {
   display: flex;
+}
+
+.gpm-to-post {
+  background-color: $color-secondary;
+  border-radius: 25px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .gpm-text-header {
@@ -67,10 +73,18 @@ $color-background: #6f6f6f;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
-  height: 600px;
+  width: 700px;
   background-color: white;
   z-index: 1;
   position: absolute;
   margin-top: 250px;
+}
+
+@media screen and (max-width: 800px) {
+  .gpm-block-red-forum {
+    height: 1500px;
+  }
+  .gpm-block-forum {
+    width: 600px;
+  }
 }

@@ -18,3 +18,9 @@ $color-background: #6f6f6f;
   width: 200px;
   padding: 40px;
 }
+
+@media screen and (max-width: 800px) {
+  .gpm-header {
+    height: 350px;
+  }
+}

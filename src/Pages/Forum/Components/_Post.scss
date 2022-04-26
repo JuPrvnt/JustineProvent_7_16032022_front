@@ -2,30 +2,16 @@ $color-primary: #d15159;
 $color-secondary: #ffe2d4;
 $color-background: #6f6f6f;
 
-.gpm-to-post {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  height: 100%;
-  background-color: $color-secondary;
-  border-radius: 25px;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  align-items: center;
-}
-
 .gpm-header-to-post {
   display: flex;
   padding: 40px;
   flex-direction: column;
-  width: 80%;
 }
 
 .gpm-content-to-post {
   display: flex;
   flex-direction: row;
   background-color: white;
-  width: 90%;
   height: 40%;
   border-radius: 25px;
 }
@@ -34,26 +20,20 @@ $color-background: #6f6f6f;
   display: flex;
   flex-direction: row;
   align-self: center;
-  width: 80%;
 }
 
 .gpm-icons-buttons {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 50%;
 }
 
 .gpm-icon {
-  width: 50px;
   height: 50px;
-  padding: 20px;
+  padding: 10px;
 }
 
 .gpm-text-photo {
   color: $color-background;
-  font-size: 24px;
-  width: 100%;
+  font-size: 16px;
   align-self: center;
 }
 
@@ -61,33 +41,50 @@ $color-background: #6f6f6f;
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 100%;
 }
 
 .gpm-text-post {
   color: $color-background;
-  font-size: 24px;
-  width: 100%;
+  font-size: 16px;
 }
 
 .gpm-posted {
   display: flex;
-  width: 80%;
-  height: 400px;
   background-color: $color-secondary;
   border-radius: 25px;
   margin-bottom: 50px;
   flex-direction: column;
+  padding: 40px;
 }
 
 .gpm-posted-header {
   display: flex;
+  justify-content: center;
+  padding-bottom: 40px;
+  font-size: 26px;
+  color: $color-primary;
+}
+
+.gpm-posted-name {
+  font-size: 18px;
+  color: black;
+  margin: 0px;
+  font-weight: bold;
+}
+
+.gpm-posted-date {
+  font-size: 16px;
+  color: $color-background;
+  margin: 0px;
 }
 
 .gpm-posted-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  background-color: #ffffff7d;
+  border-radius: 10px;
+  padding: 20px;
 }
 
 .gpm-posted-footer {
@@ -96,4 +93,13 @@ $color-background: #6f6f6f;
 
 .gpm-posted-buttons {
   display: flex;
+}
+
+@media screen and (max-width: 800px) {
+  .gpm-header-to-post {
+    width: 300px;
+  }
+  .gpm-icons {
+    display: block;
+  }
 }

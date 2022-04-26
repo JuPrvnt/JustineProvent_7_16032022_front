@@ -38,19 +38,19 @@ const Comment = () => {
   };
 
   return (
-    <div>
+    <div className="gpm-comment">
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
-          className="gpm-post-content"
+          className="gpm-comment-content"
           type="textarea"
           placeholder="Pour commenter, c'est par ici..."
           {...register("content", {
             required: true,
           })}
         />
-        <div className="gpm-icons">
-          <div className="gpm-button-post">
-            <button type="submit" className="gpm-text-post">
+        <div className="gpm-comment-icons">
+          <div className="gpm-button-comment">
+            <button type="submit" className="gpm-text-comment">
               Commenter
             </button>
           </div>

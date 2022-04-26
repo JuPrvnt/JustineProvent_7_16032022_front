@@ -6,7 +6,6 @@ import forumimage from "../../assets/connexion-image.jpg";
 import Header from "../../components/Header/Header";
 import ConnectionAPI from "../../service/ConnectionAPI";
 import Post from "./Components/Post";
-import Comment from "./Components/Comment";
 import "./_Forum.scss";
 
 const Forum = () => {
@@ -44,7 +43,6 @@ const Forum = () => {
           <img className="gpm-forum-image" src={forumimage} alt="forum" />
           <div className="gpm-block-forum">
             <Post></Post>
-            <Comment></Comment>
           </div>
         </div>
       </>

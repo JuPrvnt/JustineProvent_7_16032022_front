@@ -58,6 +58,10 @@ $color-background: #6f6f6f;
   height: 30px;
 }
 
+.gpm-button {
+  z-index: 1;
+}
+
 .gpm-button-profile {
   margin-top: 20px;
   font-size: 20px;
@@ -89,6 +93,10 @@ $color-background: #6f6f6f;
   box-shadow: 10px 10px 10px #00000025;
 }
 
-.gpm-avatar {
-  width: 20%;
+@media screen and (max-width: 800px) {
+  .gpm-text-header {
+    height: 350px;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
 }

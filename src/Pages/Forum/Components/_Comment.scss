@@ -1,0 +1,12 @@
+$color-primary: #d15159;
+$color-secondary: #ffe2d4;
+$color-background: #6f6f6f;
+
+.gpm-comment {
+  display: flex;
+  width: 80%;
+  background-color: $color-secondary;
+  border-radius: 25px;
+  margin-bottom: 50px;
+  flex-direction: column;
+}
