@@ -22,8 +22,16 @@ const Post = () => {
       content: data.content,
       image: data.image[0],
     })
-      .then(() => {
-        navigate("/connected");
+      .then((valueReturn) => {
+        if (valueReturn.status == "201") {
+          ConnectionAPI.getAllPosts()
+            .then((res) => {
+              setDataPosts(res.data);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }
       })
       .catch((error) => console.log(error));
   };
@@ -96,7 +104,7 @@ const Post = () => {
         <div className="gpm-posted-header">Voici votre fil d'actualités...</div>
         {Array.isArray(dataPosts)
           ? dataPosts.map((post) => (
-              <div key={post.userId}>
+              <div key={post.postId}>
                 <div className="gpm-posted-content">
                   <p className="gpm-posted-name">
                     {post.user.lastName} {post.user.firstName}
@@ -114,10 +122,10 @@ const Post = () => {
                     Supprimer
                   </button>{" "}
                 </div>
+                <Comment post={post}></Comment>
               </div>
             ))
           : null}
-        <Comment></Comment>
       </div>
     </div>
   );

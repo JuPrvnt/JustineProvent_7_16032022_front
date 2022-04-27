@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/";
+const API_URL = process.env.API_URL;
 
 class ConnectionAPI {
   static signup(user) {
@@ -73,6 +73,7 @@ class ConnectionAPI {
     const token = localStorage.getItem("Token");
     let dataSend = new FormData();
     dataSend.append("content", comment.content);
+    dataSend.append("postId", comment.postId);
 
     return axios.post(API_URL + "comment", dataSend, {
       headers: {

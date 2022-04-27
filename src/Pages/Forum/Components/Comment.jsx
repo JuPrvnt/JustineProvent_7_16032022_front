@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import ConnectionAPI from "../../../service/ConnectionAPI";
 import "./_Comment.scss";
 
-const Comment = () => {
+const Comment = (props) => {
   const { register, handleSubmit } = useForm();
   const [dataComments, setDataComments] = useState([]);
 
@@ -13,7 +13,12 @@ const Comment = () => {
   const onSubmit = (data) => {
     ConnectionAPI.createComment({
       content: data.content,
-    }).catch((error) => console.log(error));
+      postId: props.post.postId,
+    })
+      .then(() => {
+        navigate("/connected");
+      })
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {

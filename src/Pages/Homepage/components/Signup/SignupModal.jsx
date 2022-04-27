@@ -85,7 +85,13 @@ const SignupModal = () => {
         {errors.password && <span>{errors.password.message}</span>}
         <br />
         <div className="gpm-form-role">
-          <input type="checkbox" value="1" className="gpm-input-isAdmin" />
+          <input
+            type="checkbox"
+            className="gpm-input-isAdmin"
+            {...register("isAdmin", {
+              required: false,
+            })}
+          />
           <label>Chargé(e) de communication</label>
         </div>
         <button type="submit" className="gpm-button-form">
