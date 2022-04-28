@@ -7,6 +7,11 @@ import "./_Comment.scss";
 const Comment = (props) => {
   const { register, handleSubmit } = useForm();
   const [dataComments, setDataComments] = useState([]);
+  const [showDeleteButton, setShowDeleteButton] = useState();
+
+  let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  let userId = userInfo.id;
+  let userAdmin = userInfo.isAdmin;
 
   const navigate = useNavigate();
 
@@ -33,6 +38,9 @@ const Comment = (props) => {
     ConnectionAPI.getAllComments()
       .then((res) => {
         setDataComments(res.data);
+        if (res.data.userId === userId || userAdmin === true) {
+          setShowDeleteButton(true);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -82,13 +90,15 @@ const Comment = (props) => {
               <div className="gpm-comment-content-posted">
                 <div>{comment.content}</div>
                 <div>
-                  <button
-                    className="gpm-comment-buttons-posted gpm-button-style"
-                    onClick={deleteComment}
-                    action={"Suppression"}
-                  >
-                    Supprimer
-                  </button>{" "}
+                  {showDeleteButton && (
+                    <button
+                      className="gpm-comment-buttons-posted gpm-button-style"
+                      onClick={deleteComment}
+                      action={"Suppression"}
+                    >
+                      Supprimer
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

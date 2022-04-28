@@ -10,8 +10,13 @@ import "./_Post.scss";
 require("dayjs/locale/fr");
 
 const Post = () => {
+  let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  let userId = userInfo.id;
+  let userAdmin = userInfo.isAdmin;
+
   const { register, handleSubmit } = useForm();
   const [dataPosts, setDataPosts] = useState([]);
+  const [showDeleteButton, setShowDeleteButton] = useState();
   const relativeTime = require("dayjs/plugin/relativeTime");
   dayjs.extend(relativeTime);
 
@@ -40,6 +45,9 @@ const Post = () => {
     ConnectionAPI.getAllPosts()
       .then((res) => {
         setDataPosts(res.data);
+        if (res.data.userId === userId || userAdmin === true) {
+          setShowDeleteButton(true);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -111,13 +119,15 @@ const Post = () => {
                     {dayjs(post.createdAt).locale("fr").fromNow()}
                   </p>
                   <p>{post.content}</p>
-                  <button
-                    className="gpm-posted-buttons gpm-button-style"
-                    onClick={deletePost}
-                    action={"Suppression"}
-                  >
-                    Supprimer
-                  </button>{" "}
+                  {showDeleteButton && (
+                    <button
+                      className="gpm-posted-buttons gpm-button-style"
+                      onClick={deletePost}
+                      action={"Suppression"}
+                    >
+                      Supprimer
+                    </button>
+                  )}
                   <img className="gpm-posted-image" src={post.image}></img>
                   <Comment post={post}></Comment>
                 </div>
