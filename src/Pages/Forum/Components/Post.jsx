@@ -40,7 +40,6 @@ const Post = () => {
     ConnectionAPI.getAllPosts()
       .then((res) => {
         setDataPosts(res.data);
-        navigate("/connected");
       })
       .catch((err) => {
         console.log(err);
@@ -49,19 +48,21 @@ const Post = () => {
 
   const deletePost = () => {
     ConnectionAPI.deletePost()
-      .then(() => {
-        navigate("/connected");
+      .then((valueReturn) => {
+        if (valueReturn.status == "200") {
+          ConnectionAPI.getAllPosts()
+            .then((res) => {
+              setDataPosts(res.data);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
-  /*
-  const refreshPage = () => {
-    window.location.reload(true);
-  };
-  */
 
   return (
     <div>
@@ -89,10 +90,7 @@ const Post = () => {
             </div>
             <div className="gpm-button-post">
               <img className="gpm-icon" src={iconpost} alt="post" />
-              <button
-                type="submit"
-                className="gpm-text-post" /*onClick={refreshPage}*/
-              >
+              <button type="submit" className="gpm-button-style">
                 Publier
               </button>
             </div>
@@ -113,16 +111,16 @@ const Post = () => {
                     {dayjs(post.createdAt).locale("fr").fromNow()}
                   </p>
                   <p>{post.content}</p>
-                  <img src={post.image}></img>
                   <button
-                    className="gpm-posted-buttons"
+                    className="gpm-posted-buttons gpm-button-style"
                     onClick={deletePost}
                     action={"Suppression"}
                   >
                     Supprimer
                   </button>{" "}
+                  <img className="gpm-posted-image" src={post.image}></img>
+                  <Comment post={post}></Comment>
                 </div>
-                <Comment post={post}></Comment>
               </div>
             ))
           : null}

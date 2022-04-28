@@ -15,8 +15,16 @@ const Comment = (props) => {
       content: data.content,
       postId: props.post.postId,
     })
-      .then(() => {
-        navigate("/connected");
+      .then((valueReturn) => {
+        if (valueReturn.status == "201") {
+          ConnectionAPI.getAllComments()
+            .then((res) => {
+              setDataComments(res.data);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }
       })
       .catch((error) => console.log(error));
   };
@@ -25,7 +33,6 @@ const Comment = (props) => {
     ConnectionAPI.getAllComments()
       .then((res) => {
         setDataComments(res.data);
-        navigate("/connected");
       })
       .catch((err) => {
         console.log(err);
@@ -34,8 +41,16 @@ const Comment = (props) => {
 
   const deleteComment = () => {
     ConnectionAPI.deleteComment()
-      .then(() => {
-        navigate("/connected");
+      .then((valueReturn) => {
+        if (valueReturn.status == "200") {
+          ConnectionAPI.getAllComments()
+            .then((res) => {
+              setDataComments(res.data);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -43,8 +58,8 @@ const Comment = (props) => {
   };
 
   return (
-    <div className="gpm-comment">
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)} className="gpm-comment">
         <input
           className="gpm-comment-content"
           type="textarea"
@@ -53,32 +68,28 @@ const Comment = (props) => {
             required: true,
           })}
         />
-        <div className="gpm-comment-icons">
-          <div className="gpm-button-comment">
-            <button type="submit" className="gpm-text-comment">
-              Commenter
-            </button>
-          </div>
-        </div>
+        <button type="submit" className="gpm-button-comment gpm-button-style">
+          Commenter
+        </button>
       </form>
 
       {Array.isArray(dataComments)
         ? dataComments.map((comment) => (
-            <div key={comment.commentId} className="gpm-comment">
-              <div className="gpm-comment-header">
+            <div key={comment.commentId} className="gpm-comment-posted">
+              <div className="gpm-comment-name-posted">
                 {comment.user.firstName} a publié :
               </div>
-              <div className="gpm-comment-content">
-                <p>{comment.content}</p>
-              </div>
-              <div className="gpm-comment-footer">
-                <button
-                  className="gpm-comment-buttons"
-                  onClick={deleteComment}
-                  action={"Suppression"}
-                >
-                  Supprimer
-                </button>{" "}
+              <div className="gpm-comment-content-posted">
+                <div>{comment.content}</div>
+                <div>
+                  <button
+                    className="gpm-comment-buttons-posted gpm-button-style"
+                    onClick={deleteComment}
+                    action={"Suppression"}
+                  >
+                    Supprimer
+                  </button>{" "}
+                </div>
               </div>
             </div>
           ))

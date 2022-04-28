@@ -4,9 +4,52 @@ $color-background: #6f6f6f;
 
 .gpm-comment {
   display: flex;
-  width: 80%;
-  background-color: $color-secondary;
+  align-items: center;
+  flex-direction: row;
+}
+
+.gpm-comment-content {
+  display: flex;
+  height: 40%;
   border-radius: 25px;
-  margin-bottom: 50px;
-  flex-direction: column;
+  margin: 30px;
+  width: 300px;
+}
+
+.gpm-button-comment {
+  height: 20px;
+}
+
+.gpm-comment-name-posted {
+  display: flex;
+  font-size: 18px;
+  color: black;
+  margin: 0px;
+  font-weight: bold;
+}
+
+.gpm-comment-content-posted {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.gpm-comment-buttons-posted {
+  margin-left: 20px;
+}
+
+.gpm-button-style {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 100px;
+  border-radius: 25px;
+  background-color: $color-primary;
+  color: white;
+  font-family: "Roboto", Tahoma, Verdana, sans-serif;
+  border-style: none;
+  font-size: 18px;
+  box-shadow: 10px 10px 10px #00000025;
 }

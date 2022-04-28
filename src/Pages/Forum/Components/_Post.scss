@@ -43,6 +43,22 @@ $color-background: #6f6f6f;
   align-items: center;
 }
 
+.gpm-button-style {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 100px;
+  border-radius: 25px;
+  background-color: $color-primary;
+  color: white;
+  font-family: "Roboto", Tahoma, Verdana, sans-serif;
+  border-style: none;
+  font-size: 18px;
+  box-shadow: 10px 10px 10px #00000025;
+}
+
 .gpm-text-post {
   color: $color-background;
   font-size: 16px;
@@ -87,12 +103,24 @@ $color-background: #6f6f6f;
   padding: 20px;
 }
 
+.gpm-posted-image {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  align-self: center;
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
 .gpm-posted-footer {
   display: flex;
 }
 
 .gpm-posted-buttons {
   display: flex;
+  position: absolute;
+  right: 100px;
+  margin-right: 20px;
 }
 
 @media screen and (max-width: 800px) {
