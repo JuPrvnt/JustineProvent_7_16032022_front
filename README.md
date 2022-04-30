@@ -1,6 +1,8 @@
-# Pour lancer le projet, cloner le backend et le frontend :
+# Projet - Créer un réseau social d'entreprise
 
-## 1) BACKEND
+## Pour lancer le projet, cloner le backend et le frontend :
+
+### 1) BACKEND
 
 Le backend se trouve ici : https://github.com/JuPrvnt/JustineProvent_7_16032022_back
 
@@ -10,7 +12,7 @@ npm install
 
 nodemon server
 ```
-## 2) FRONTEND
+### 2) FRONTEND
 
 Le frontend se trouve là : https://github.com/JuPrvnt/JustineProvent_7_16032022_front
 
