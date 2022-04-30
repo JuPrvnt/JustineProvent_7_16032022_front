@@ -5,7 +5,7 @@ import Button from "../../components/Button/Button";
 import SignupModal from "./components/Signup/SignupModal";
 import LoginModal from "./components/Login/LoginModal";
 import Modal from "../../components/Modal/Modal";
-import "./_Homepage.scss";
+import "./Homepage.scss";
 
 const Homepage = () => {
   const [showModalLogin, setShowModalLogin] = useState(false);

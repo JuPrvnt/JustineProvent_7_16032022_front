@@ -3,7 +3,7 @@ $color-secondary: #ffe2d4;
 $color-background: #6f6f6f;
 
 .gpm-block-red-forum {
-  height: 1700px;
+  height: 3000px;
   background-color: $color-primary;
 }
 
@@ -71,6 +71,10 @@ $color-background: #6f6f6f;
   z-index: 1;
   position: absolute;
   margin-top: 250px;
+}
+
+.gpm-posts-list {
+  padding: 0px;
 }
 
 @media screen and (max-width: 800px) {

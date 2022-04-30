@@ -3,7 +3,7 @@ import ConnectionAPI from "../../../../service/ConnectionAPI";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import "./_LoginModal.scss";
+import "./LoginModal.scss";
 
 const LoginModal = () => {
   // useState

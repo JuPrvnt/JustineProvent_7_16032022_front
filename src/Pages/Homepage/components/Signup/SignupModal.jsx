@@ -2,7 +2,7 @@ import React from "react";
 import ConnectionAPI from "../../../../service/ConnectionAPI";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import "./_SignupModal.scss";
+import "./SignupModal.scss";
 
 const SignupModal = () => {
   // register

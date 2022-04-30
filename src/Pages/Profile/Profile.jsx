@@ -5,7 +5,7 @@ import ConnectionAPI from "../../service/ConnectionAPI";
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import "./_Profile.scss";
+import "./Profile.scss";
 
 const Profile = () => {
   const [lastName, setLastName] = useState();

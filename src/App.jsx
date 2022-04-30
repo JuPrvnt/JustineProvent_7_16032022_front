@@ -4,7 +4,7 @@ import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
 import Forum from "./Pages/Forum/Forum.jsx";
 import Profile from "./Pages/Profile/Profile.jsx";
-import "./_App.scss";
+import "./App.scss";
 
 const App = () => {
   return (

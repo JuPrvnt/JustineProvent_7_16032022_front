@@ -62,7 +62,7 @@ const Forum = () => {
             <div className="gpm-posted-header">
               Voici votre fil d'actualités...
             </div>
-            <ul>
+            <ul className="gpm-posts-list">
               {dataPosts.map((post, i) => (
                 <PostCard post={post} key={i} addPost={addnewpost}></PostCard>
               ))}
