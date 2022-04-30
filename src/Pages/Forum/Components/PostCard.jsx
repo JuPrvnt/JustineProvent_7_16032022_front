@@ -50,8 +50,8 @@ const PostCard = (props) => {
       });
   };
 
-  const addNewComment = (newComment) => {
-    setDataComment(dataComment.concat(newComment));
+  const addNewComment = () => {
+    window.location.reload();
   };
 
   return (

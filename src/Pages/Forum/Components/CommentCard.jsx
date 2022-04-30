@@ -24,13 +24,9 @@ const CommentCard = (props) => {
     ConnectionAPI.deleteComment()
       .then((valueReturn) => {
         if (valueReturn.status == "200") {
-          ConnectionAPI.getAllComments()
-            .then((res) => {
-              setDataComments(res.data);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
+          ConnectionAPI.getAllComments().catch((err) => {
+            console.log(err);
+          });
         }
       })
       .catch((err) => {
@@ -39,8 +35,8 @@ const CommentCard = (props) => {
   };
 
   return (
-    <div>
-      <div key={comment.commentId} className="gpm-comment-posted">
+    <div className="gpm-comment-posted">
+      <div key={comment.commentId}>
         <div className="gpm-comment-name-posted">
           {comment.user.firstName} a publié :
         </div>
