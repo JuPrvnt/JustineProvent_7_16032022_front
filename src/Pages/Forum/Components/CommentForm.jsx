@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
+import React from "react";
 import { useForm } from "react-hook-form";
 import ConnectionAPI from "../../../service/ConnectionAPI";
 import "./CommentForm.scss";
@@ -7,17 +6,13 @@ import "./CommentForm.scss";
 const CommentForm = (props) => {
   const { register, handleSubmit } = useForm();
 
-  let userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  let userId = userInfo.userId;
-  let userAdmin = userInfo.isAdmin;
-
   const onSubmit = (data) => {
     ConnectionAPI.createComment({
       content: data.content,
-      postId: props.post.postId,
+      postId: props.postId,
     })
       .then((valueReturn) => {
-        if (valueReturn.status == "201") {
+        if (valueReturn.status === "201") {
           ConnectionAPI.getAllComments()
             .then((res) => {
               props.newComment(res.data.comment);

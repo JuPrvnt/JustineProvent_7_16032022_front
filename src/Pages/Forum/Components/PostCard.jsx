@@ -50,6 +50,10 @@ const PostCard = (props) => {
       });
   };
 
+  const addNewComment = (newComment) => {
+    setDataComment(dataComment.concat(newComment));
+  };
+
   return (
     <div>
       <div className="gpm-posted">
@@ -72,7 +76,9 @@ const PostCard = (props) => {
               </button>
             )}
             <img className="gpm-posted-image" src={post.image} alt=""></img>
-            {setShowComments && <CommentForm postId={post.postId} />}
+            {setShowComments && (
+              <CommentForm postId={post.postId} newComment={addNewComment} />
+            )}
             <ul>
               {showComments &&
                 dataComment.map((comment, i) => (
