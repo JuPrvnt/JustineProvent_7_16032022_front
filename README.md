@@ -27,9 +27,11 @@ npm install
 npm run start
 =======
 ```
+
 npm install
 
 nodemon server
+
 ```
 ### 2) FRONTEND
 
@@ -37,8 +39,11 @@ Le frontend se trouve là : https://github.com/JuPrvnt/JustineProvent_7_16032022
 
 Une fois cloné, pour le lancer :
 ```
+
 npm install
 
-npm run start 
->>>>>>> 2523877b60c1a391c890c14b8f404f60e0aebecc
+npm run start
+
+```
+
 ```
