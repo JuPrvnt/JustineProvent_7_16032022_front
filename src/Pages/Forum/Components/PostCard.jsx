@@ -24,7 +24,9 @@ const PostCard = (props) => {
   useEffect(() => {
     ConnectionAPI.getAllComments()
       .then((res) => {
+        //if (res.data[0].postId === props.post.postId) {
         setDataComment(res.data);
+        //}
       })
       .catch((err) => {
         console.log(err);
