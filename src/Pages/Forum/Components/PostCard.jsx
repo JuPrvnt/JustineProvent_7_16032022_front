@@ -11,6 +11,15 @@ const PostCard = (props) => {
 
   const [showDeleteButton, setShowDeleteButton] = useState();
   const [dataComment, setDataComment] = useState([]);
+  const [imagePost, setImagePost] = useState();
+
+  useEffect(() => {
+    if (post.image === null) {
+      setImagePost(false);
+    } else {
+      setImagePost(true);
+    }
+  }, [post.image]);
 
   useEffect(() => {
     ConnectionAPI.getAllComments()
@@ -72,7 +81,9 @@ const PostCard = (props) => {
                 Supprimer
               </button>
             )}
-            <img className="gpm-posted-image" src={post.image} alt=""></img>
+            {imagePost && (
+              <img className="gpm-posted-image" src={post.image} alt=""></img>
+            )}
             <CommentForm postId={post.postId} newComment={addNewComment} />
             <ul>
               {dataComment.map((comment, i) => (
