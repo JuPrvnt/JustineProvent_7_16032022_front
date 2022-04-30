@@ -10,7 +10,6 @@ const PostCard = (props) => {
   const { post } = props;
 
   const [showDeleteButton, setShowDeleteButton] = useState();
-  const [showComments, setShowComments] = useState();
   const [dataComment, setDataComment] = useState([]);
 
   useEffect(() => {
@@ -76,17 +75,12 @@ const PostCard = (props) => {
               </button>
             )}
             <img className="gpm-posted-image" src={post.image} alt=""></img>
-            {setShowComments && (
-              <CommentForm postId={post.postId} newComment={addNewComment} />
-            )}
-            <div>
-              <ul>
-                {showComments &&
-                  dataComment.map((comment, i) => (
-                    <CommentCard comment={comment} key={i} />
-                  ))}
-              </ul>
-            </div>
+            <CommentForm postId={post.postId} newComment={addNewComment} />
+            <ul>
+              {dataComment.map((comment, i) => (
+                <CommentCard comment={comment} key={i} />
+              ))}
+            </ul>
           </div>
         </div>
       </div>
