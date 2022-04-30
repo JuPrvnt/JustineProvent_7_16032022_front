@@ -40,5 +40,4 @@ Une fois cloné, pour le lancer :
 npm install
 
 npm run start 
->>>>>>> 2523877b60c1a391c890c14b8f404f60e0aebecc
 ```
