@@ -10,7 +10,7 @@ const Comment = (props) => {
   const [showDeleteButton, setShowDeleteButton] = useState();
 
   let userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  let userId = userInfo.id;
+  let userId = userInfo.userId;
   let userAdmin = userInfo.isAdmin;
 
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ const Comment = (props) => {
     ConnectionAPI.getAllComments()
       .then((res) => {
         setDataComments(res.data);
-        if (res.data.userId === userId || userAdmin === true) {
+        if (props.post.userId === userId || userAdmin === true) {
           setShowDeleteButton(true);
         }
       })

@@ -9,9 +9,9 @@ import dayjs from "dayjs";
 import "./_Post.scss";
 require("dayjs/locale/fr");
 
-const Post = () => {
+const Post = (props) => {
   let userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  let userId = userInfo.id;
+  let userId = userInfo.userId;
   let userAdmin = userInfo.isAdmin;
 
   const { register, handleSubmit } = useForm();
@@ -45,7 +45,7 @@ const Post = () => {
     ConnectionAPI.getAllPosts()
       .then((res) => {
         setDataPosts(res.data);
-        if (res.data.userId === userId || userAdmin === true) {
+        if (res.data[0].userId === userId || userAdmin === true) {
           setShowDeleteButton(true);
         }
       })
