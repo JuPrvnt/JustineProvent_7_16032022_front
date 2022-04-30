@@ -1,0 +1,67 @@
+$color-primary: #d15159;
+$color-secondary: #ffe2d4;
+$color-background: #6f6f6f;
+
+.gpm-to-post {
+  background-color: $color-secondary;
+  border-radius: 25px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.gpm-content-to-post {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  height: 40%;
+  border-radius: 25px;
+}
+
+.gpm-icons {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+}
+
+.gpm-icons-buttons {
+  display: flex;
+}
+
+.gpm-icon {
+  height: 50px;
+  padding: 10px;
+}
+
+.gpm-text-photo {
+  color: $color-background;
+  font-size: 16px;
+  align-self: center;
+}
+
+.gpm-button-post {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.gpm-button-style {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 100px;
+  border-radius: 25px;
+  background-color: $color-primary;
+  color: white;
+  font-family: "Roboto", Tahoma, Verdana, sans-serif;
+  border-style: none;
+  font-size: 18px;
+  box-shadow: 10px 10px 10px #00000025;
+}
+
+@media screen and (max-width: 800px) {
+  .gpm-icons {
+    display: block;
+  }
+}

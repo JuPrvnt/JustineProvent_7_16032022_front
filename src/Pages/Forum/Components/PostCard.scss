@@ -8,41 +8,6 @@ $color-background: #6f6f6f;
   flex-direction: column;
 }
 
-.gpm-content-to-post {
-  display: flex;
-  flex-direction: row;
-  background-color: white;
-  height: 40%;
-  border-radius: 25px;
-}
-
-.gpm-icons {
-  display: flex;
-  flex-direction: row;
-  align-self: center;
-}
-
-.gpm-icons-buttons {
-  display: flex;
-}
-
-.gpm-icon {
-  height: 50px;
-  padding: 10px;
-}
-
-.gpm-text-photo {
-  color: $color-background;
-  font-size: 16px;
-  align-self: center;
-}
-
-.gpm-button-post {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
 .gpm-button-style {
   display: flex;
   align-self: center;
@@ -126,8 +91,5 @@ $color-background: #6f6f6f;
 @media screen and (max-width: 800px) {
   .gpm-header-to-post {
     width: 300px;
-  }
-  .gpm-icons {
-    display: block;
   }
 }

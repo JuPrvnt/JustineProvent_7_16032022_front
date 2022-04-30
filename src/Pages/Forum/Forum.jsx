@@ -1,21 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
 import forumimage from "../../assets/connexion-image.jpg";
 import Header from "../../components/Header/Header";
 import ConnectionAPI from "../../service/ConnectionAPI";
-import Post from "./Components/Post";
-import "./_Forum.scss";
+import PostCard from "./Components/PostCard";
+import PostForm from "./Components/PostForm";
+import "./Forum.scss";
 
 const Forum = () => {
   const navigate = useNavigate();
+
+  const [dataPosts, setDataPosts] = useState([]);
 
   const logout = () => {
     ConnectionAPI.logout();
     localStorage.removeItem("userInfo");
     localStorage.removeItem("Token");
     navigate("/");
+  };
+
+  useEffect(() => {
+    ConnectionAPI.getAllPosts()
+      .then((res) => {
+        setDataPosts(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const addnewpost = () => {
+    window.location.reload();
   };
 
   return (
@@ -42,7 +58,15 @@ const Forum = () => {
         <div className="gpm-forum-background">
           <img className="gpm-forum-image" src={forumimage} alt="forum" />
           <div className="gpm-block-forum">
-            <Post></Post>
+            <PostForm addPost={addnewpost}></PostForm>
+            <div className="gpm-posted-header">
+              Voici votre fil d'actualités...
+            </div>
+            <ul>
+              {dataPosts.map((post, i) => (
+                <PostCard post={post} key={i} addPost={addnewpost}></PostCard>
+              ))}
+            </ul>
           </div>
         </div>
       </>
