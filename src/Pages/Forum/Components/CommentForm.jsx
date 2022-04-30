@@ -11,16 +11,8 @@ const CommentForm = (props) => {
       content: data.content,
       postId: props.postId,
     })
-      .then((valueReturn) => {
-        if (valueReturn.status === "201") {
-          ConnectionAPI.getAllComments()
-            .then((res) => {
-              props.newComment(res.data.comment);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        }
+      .then((res) => {
+        props.newComment(res.data.comment);
       })
       .catch((error) => console.log(error));
   };

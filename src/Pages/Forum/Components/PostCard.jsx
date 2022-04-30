@@ -39,9 +39,7 @@ const PostCard = (props) => {
     ConnectionAPI.deletePost()
       .then((valueReturn) => {
         if (valueReturn.status === "200") {
-          ConnectionAPI.getAllPosts().catch((err) => {
-            console.log(err);
-          });
+          ConnectionAPI.getAllPosts();
         }
       })
       .catch((err) => {

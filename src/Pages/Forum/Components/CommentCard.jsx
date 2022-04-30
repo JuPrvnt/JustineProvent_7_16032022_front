@@ -21,9 +21,7 @@ const CommentCard = (props) => {
     ConnectionAPI.deleteComment()
       .then((valueReturn) => {
         if (valueReturn.status === "200") {
-          ConnectionAPI.getAllComments().catch((err) => {
-            console.log(err);
-          });
+          ConnectionAPI.getAllComments();
         }
       })
       .catch((err) => {
