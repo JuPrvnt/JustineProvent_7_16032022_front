@@ -1,4 +1,4 @@
-Pour lancer le projet, cloner le backend et le frontend :
+#Pour lancer le projet, cloner le backend et le frontend :
 
 1) BACKEND
 
