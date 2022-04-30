@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
-import { useForm } from "react-hook-form";
 import ConnectionAPI from "../../../service/ConnectionAPI";
 import "./CommentCard.scss";
 
 const CommentCard = (props) => {
   let { comment } = props;
 
-  const [dataComments, setDataComments] = useState([]);
   const [showDeleteButton, setShowDeleteButton] = useState();
 
   let userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -23,7 +20,7 @@ const CommentCard = (props) => {
   const deleteComment = () => {
     ConnectionAPI.deleteComment()
       .then((valueReturn) => {
-        if (valueReturn.status == "200") {
+        if (valueReturn.status === "200") {
           ConnectionAPI.getAllComments().catch((err) => {
             console.log(err);
           });

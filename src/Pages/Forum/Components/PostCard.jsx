@@ -79,12 +79,14 @@ const PostCard = (props) => {
             {setShowComments && (
               <CommentForm postId={post.postId} newComment={addNewComment} />
             )}
-            <ul>
-              {showComments &&
-                dataComment.map((comment, i) => (
-                  <CommentCard comment={comment} key={i} />
-                ))}
-            </ul>
+            <div>
+              <ul>
+                {showComments &&
+                  dataComment.map((comment, i) => (
+                    <CommentCard comment={comment} key={i} />
+                  ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
