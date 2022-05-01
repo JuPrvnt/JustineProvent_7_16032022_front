@@ -4,6 +4,7 @@ import CommentForm from "./CommentForm";
 import CommentCard from "./CommentCard";
 import dayjs from "dayjs";
 import "./PostCard.scss";
+import { render } from "@testing-library/react";
 require("dayjs/locale/fr");
 
 const PostCard = (props) => {
@@ -22,11 +23,9 @@ const PostCard = (props) => {
   }, [post.image]);
 
   useEffect(() => {
-    ConnectionAPI.getAllComments()
+    ConnectionAPI.getAllComments(post.postId)
       .then((res) => {
-        //if (res.data[0].postId === props.post.postId) {
-        setDataComment(res.data);
-        //}
+        post.comments = res.data;
       })
       .catch((err) => {
         console.log(err);
@@ -88,7 +87,7 @@ const PostCard = (props) => {
             )}
             <CommentForm postId={post.postId} newComment={addNewComment} />
             <ul>
-              {dataComment.map((comment, i) => (
+              {post.comments?.map((comment, i) => (
                 <CommentCard comment={comment} key={i} />
               ))}
             </ul>
