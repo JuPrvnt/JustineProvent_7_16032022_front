@@ -8,7 +8,7 @@ const CommentCard = (props) => {
   const [showDeleteButton, setShowDeleteButton] = useState();
 
   let userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  let userId = userInfo.id;
+  let userId = userInfo.userId;
   let userAdmin = userInfo.isAdmin;
 
   useEffect(() => {

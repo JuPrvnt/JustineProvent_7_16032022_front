@@ -36,7 +36,7 @@ const PostCard = (props) => {
   }, []);
 
   let userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  let userId = userInfo.id;
+  let userId = userInfo.userId;
   let userAdmin = userInfo.isAdmin;
 
   const relativeTime = require("dayjs/plugin/relativeTime");
