@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import forumimage from "../../assets/connexion-image.jpg";
 import Header from "../../components/Header/Header";
 import ConnectionAPI from "../../service/ConnectionAPI";
-import PostCard from "./Components/PostCard";
-import PostForm from "./Components/PostForm";
+import PostCard from "./Components/PostCard/PostCard";
+import PostForm from "./Components/PostForm/PostForm";
 import "./Forum.scss";
 
 const Forum = () => {
