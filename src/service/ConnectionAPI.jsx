@@ -85,15 +85,12 @@ class ConnectionAPI {
   static getAllComments(postId) {
     const token = localStorage.getItem("Token");
 
-    return axios.get(
-      API_URL + "comment",
-      { postId },
-      {
-        headers: {
-          authorization: "Bearer " + token,
-        },
-      }
-    );
+    return axios.get(API_URL + "comment", {
+      params: { postId },
+      headers: {
+        authorization: "Bearer " + token,
+      },
+    });
   }
   static deleteComment() {
     const token = localStorage.getItem("Token");

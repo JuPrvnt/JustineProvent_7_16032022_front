@@ -4,14 +4,12 @@ import CommentForm from "./CommentForm";
 import CommentCard from "./CommentCard";
 import dayjs from "dayjs";
 import "./PostCard.scss";
-import { render } from "@testing-library/react";
 require("dayjs/locale/fr");
 
 const PostCard = (props) => {
   const { post } = props;
 
   const [showDeleteButton, setShowDeleteButton] = useState();
-  const [dataComment, setDataComment] = useState([]);
   const [imagePost, setImagePost] = useState();
 
   useEffect(() => {
@@ -47,14 +45,10 @@ const PostCard = (props) => {
 
   const deletePost = () => {
     ConnectionAPI.deletePost()
-      .then((valueReturn) => {
-        if (valueReturn.status === "200") {
-          ConnectionAPI.getAllPosts();
-        }
+      .then((res) => {
+        props.addPost(res.data.post);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((error) => console.log(error));
   };
 
   const addNewComment = () => {
@@ -88,7 +82,11 @@ const PostCard = (props) => {
             <CommentForm postId={post.postId} newComment={addNewComment} />
             <ul>
               {post.comments?.map((comment, i) => (
-                <CommentCard comment={comment} key={i} />
+                <CommentCard
+                  comment={comment}
+                  key={i}
+                  newComment={addNewComment}
+                />
               ))}
             </ul>
           </div>

@@ -19,14 +19,10 @@ const CommentCard = (props) => {
 
   const deleteComment = () => {
     ConnectionAPI.deleteComment()
-      .then((valueReturn) => {
-        if (valueReturn.status === "200") {
-          ConnectionAPI.getAllComments();
-        }
+      .then((res) => {
+        props.addNewComment(res.data.comment);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((error) => console.log(error));
   };
 
   return (
