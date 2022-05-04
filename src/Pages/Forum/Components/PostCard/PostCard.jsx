@@ -71,7 +71,7 @@ const PostCard = (props) => {
             <p className="gpm-posted-date">
               {dayjs(post.createdAt).locale("fr").fromNow()}
             </p>
-            <p>{post.content}</p>
+            <p className="gpm-posted-text">{post.content}</p>
             {showDeleteButton && (
               <button
                 className="gpm-posted-buttons gpm-button-style"
