@@ -39,60 +39,63 @@ const SignupModal = () => {
       <form onSubmit={handleSubmit(onSubmit)} className="form">
         <label>
           <p className="gpm-title-form">Mon NOM :</p>
+          <input
+            id="lastname"
+            className="gpm-input-form"
+            {...register("lastName", {
+              required: true,
+            })}
+          />
         </label>
-        <input
-          className="gpm-input-form"
-          {...register("lastName", {
-            required: true,
-          })}
-        />
         <br />
         <label>
           <p className="gpm-title-form">Mon Prénom :</p>
-        </label>
-        <input
-          className="gpm-input-form"
-          {...register("firstName", {
-            required: true,
-          })}
-        />
-        <br />
-        <label>
-          <p className="gpm-title-form">Mon adresse email :</p>
-        </label>
-        <input
-          className="gpm-input-form"
-          {...register("email", {
-            required: true,
-          })}
-        />
-        <br />
-        <label>
-          <p className="gpm-title-form">Mon mot de passe</p>
-        </label>
-        <input
-          className="gpm-input-form"
-          type="password"
-          {...register("password", {
-            required: true,
-            pattern: {
-              value: /^((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,64})$/,
-              message:
-                "Votre mot de passe doit contenir au moins 6 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial",
-            },
-          })}
-        />
-        {errors.password && <span>{errors.password.message}</span>}
-        <br />
-        <div className="gpm-form-role">
           <input
-            type="checkbox"
-            className="gpm-input-isAdmin"
-            {...register("isAdmin", {
-              required: false,
+            className="gpm-input-form"
+            {...register("firstName", {
+              required: true,
             })}
           />
-          <label>Chargé(e) de communication</label>
+          <br />
+        </label>
+        <label>
+          <p className="gpm-title-form">Mon adresse email :</p>
+          <input
+            className="gpm-input-form"
+            {...register("email", {
+              required: true,
+            })}
+          />
+          <br />
+        </label>
+        <label>
+          <p className="gpm-title-form">Mon mot de passe</p>
+          <input
+            className="gpm-input-form"
+            type="password"
+            {...register("password", {
+              required: true,
+              pattern: {
+                value: /^((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,64})$/,
+                message:
+                  "Votre mot de passe doit contenir au moins 6 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial",
+              },
+            })}
+          />
+          {errors.password && <span>{errors.password.message}</span>}
+          <br />
+        </label>
+        <div className="gpm-form-role">
+          <label>
+            <input
+              type="checkbox"
+              className="gpm-input-isAdmin"
+              {...register("isAdmin", {
+                required: false,
+              })}
+            />
+            <p>Chargé(e) de communication</p>
+          </label>
         </div>
         <button type="submit" className="gpm-button-form">
           Je m'inscris

@@ -43,32 +43,32 @@ const LoginModal = () => {
       <form onSubmit={handleSubmit(onSubmit)} className="form">
         <label>
           <p className="gpm-title-form">Mon adresse email :</p>
+          <input
+            className="gpm-input-form"
+            {...register("email", {
+              required: true,
+              message: "Vous devez entrer une adresse mail valide",
+            })}
+          />
+          {errors.email && <span>{errors.email.message}</span>}
+          <br />
         </label>
-        <input
-          className="gpm-input-form"
-          {...register("email", {
-            required: true,
-            message: "Vous devez entrer une adresse mail valide",
-          })}
-        />
-        {errors.email && <span>{errors.email.message}</span>}
-        <br />
         <label>
           <p className="gpm-title-form">Mon mot de passe</p>
+          <input
+            className="gpm-input-form"
+            type="password"
+            {...register("password", {
+              required: true,
+              pattern: {
+                value: /^((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,64})$/,
+                message: "Le mot de passe est incorrect.",
+              },
+            })}
+          />
+          {errors.password && <span>{errors.password.message}</span>}
+          <br />
         </label>
-        <input
-          className="gpm-input-form"
-          type="password"
-          {...register("password", {
-            required: true,
-            pattern: {
-              value: /^((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,64})$/,
-              message: "Le mot de passe est incorrect.",
-            },
-          })}
-        />
-        {errors.password && <span>{errors.password.message}</span>}
-        <br />
         <button type="submit" className="gpm-button-form">
           Je me connecte
         </button>
